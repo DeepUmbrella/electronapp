@@ -1,12 +1,16 @@
 {
-  "name": "electron-quick-start",
+  "name": "paymenttool",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "payment demo application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "css-login": "sass ./login.scss login.css --no-source-map ",
+    "dev": "nodemon --ignore '*.txt' --exec electron .",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "server": "nodemon validataServie.js"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
     "Electron",
     "quick",
@@ -14,9 +18,36 @@
     "tutorial",
     "demo"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "DeepUmbrella",
+  "license": "MIT",
   "devDependencies": {
-    "electron": "^27.0.4"
+    "@electron-forge/cli": "^6.4.2",
+    "@electron-forge/maker-deb": "^6.4.2",
+    "@electron-forge/maker-rpm": "^6.4.2",
+    "@electron-forge/maker-squirrel": "^6.4.2",
+    "@electron-forge/maker-zip": "^6.4.2",
+    "@electron-forge/plugin-auto-unpack-natives": "^6.4.2",
+    "electron": "^27.0.4",
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "axios": "^1.6.1",
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "build": {
+    "win": {
+      "icon": "./favicon.ico"
+    },
+    "nsis": {
+      "oneClick": "false",
+      "allowToChangeInstallationDirectory": "true",
+      "allowElevation": "true",
+      "installerIcon": "favicon.ico",
+      "uninstallerIcon": "favicon.ico",
+      "installerHeaderIcon": "./favicon.ico",
+      "installerHeader": "./favicon.ico",
+      "createDesktopShortcut": "true",
+      "createStartMenuShortcut": "true"
+    }
   }
 }

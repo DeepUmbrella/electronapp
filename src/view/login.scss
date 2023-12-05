@@ -1,0 +1,75 @@
+body {
+  width: 375px;
+  height: 480px;
+  padding: 16px;
+  -webkit-app-region: drag;
+  border-radius: 12px;
+  background: rgba(239, 246, 255, 1);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1),
+    0px 10.2px 21.6px rgba(23, 57, 222, 0.25);
+}
+
+.login-container {
+  position: relative;
+  .main-close {
+    -webkit-app-region: no-drag;
+    position: absolute;
+    right: -15px;
+    top: -21px;
+    svg {
+      height: 16px;
+      width: 16px;
+      color: red;
+    }
+  }
+}
+
+#loginform {
+  -webkit-app-region: no-drag;
+  height: 448px;
+  opacity: 1;
+
+  padding: 36px 16px;
+  .row {
+    margin: 0;
+    padding: 0;
+  }
+  .input-icon {
+    padding: 0 8px;
+    color: rgba(7, 40, 185, 0.9);
+    width: 32px;
+  }
+  .form-control {
+    padding-left: 32px;
+    opacity: 1;
+    border-radius: 4.8px;
+    background: rgba(193, 210, 255, 0.4);
+
+    font-weight: 700;
+    letter-spacing: 0px;
+
+    color: rgba(7, 40, 185, 0.7);
+    border: none;
+    &::placeholder {
+      color: rgba(7, 40, 185, 0.7);
+    }
+  }
+  .login-welcome {
+    /** 文本1 */
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0px;
+    line-height: 31.28px;
+    color: rgba(2, 17, 43, 1);
+  }
+  .login-welcome-sb {
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .form-check-input:checked[type="checkbox"] {
+    --bs-form-check-bg-image: url(../icon/check.svg);
+  }
+}
+body {
+  background-color: transparent;
+}

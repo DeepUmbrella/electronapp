@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../resource/style/bootstrap.min.css" rel="stylesheet" />
+    <link href="./main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="menu-container d-flex justify-content-center">
+      <div class="main-close" type="button" data-close="process">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1em"
+          viewBox="0 0 512 512"
+          fill="currentColor"
+        >
+          <path
+            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
+          />
+        </svg>
+      </div>
+      <div class="main-container">
+        <div class="main-show">
+          <div class="user-info-setting d-flex">
+            <div
+              class="user-info-avator d-flex align-items-center justify-content-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="1em"
+                viewBox="0 0 512 512"
+                fill="currentColor"
+              >
+                <path
+                  d="M256 288A144 144 0 1 0 256 0a144 144 0 1 0 0 288zm-94.7 32C72.2 320 0 392.2 0 481.3c0 17 13.8 30.7 30.7 30.7H481.3c17 0 30.7-13.8 30.7-30.7C512 392.2 439.8 320 350.7 320H161.3z"
+                />
+              </svg>
+            </div>
+            <div class="user-info my-2">
+              <div class="user-name" id="user-name-show">超级大傻吊</div>
+              <div class="user-show d-flex align-items-center">
+                <div class="user-id-area">
+                  盒子号:
+                  <span class="user-id" id="user-id-show">wqyllm91378</span>
+                </div>
+                <div class="user-id-copy">复制</div>
+              </div>
+            </div>
+            <div class="user-setting d-flex">
+              <div class="msg-icon position-relative">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-chat-square-dots"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"
+                  />
+                  <path
+                    d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"
+                  />
+                </svg>
+              </div>
+              <div class="setting-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-gear"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"
+                  />
+                  <path
+                    d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="follow-number my-4 text-center d-flex">
+            <div class="follow-item">0 粉丝</div>
+            <div class="follow-item">0 关注</div>
+            <div class="follow-item">0 收藏</div>
+          </div>
+          <div class="gold-info mb-3 mx-0 row">
+            <div class="gold-item col">
+              <div
+                class="gold-item-title color-gray d-flex align-items-center justify-content-center"
+              >
+                <span>盒币</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-info-circle"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                  />
+                  <path
+                    d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"
+                  />
+                </svg>
+              </div>
+              <div
+                id="user-gold-number"
+                class="gold-number color-white text-center"
+              >
+                334515
+              </div>
+              <div
+                type="button"
+                class="gold-option bg-gold color-gold-in text-center"
+                data-toggle="recharge"
+                data-recharge-target="#recharge-select"
+              >
+                充值
+              </div>
+            </div>
+            <div class="gold-item col">
+              <div
+                class="gold-item-title color-gray d-flex align-items-center justify-content-center"
+              >
+                <span>金币</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-info-circle"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                  />
+                  <path
+                    d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"
+                  />
+                </svg>
+              </div>
+              <div class="gold-number color-white text-center">0</div>
+              <div class="gold-option bg-gold-2 text-center">提现</div>
+            </div>
+            <div class="gold-item col">
+              <div
+                class="gold-item-title color-gray d-flex align-items-center justify-content-center"
+              >
+                <span>交易币</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-info-circle"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                  />
+                  <path
+                    d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"
+                  />
+                </svg>
+              </div>
+              <div class="gold-number color-white text-center">0.0</div>
+              <div class="gold-option bg-gold-3 text-center">提现</div>
+            </div>
+          </div>
+          <div
+            class="vip-card mb-3 d-flex align-items-center justify-content-center"
+          >
+            <div
+              class="vip-card-content d-flex align-items-center justify-content-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                width="17.56005859375"
+                height="15.43994140625"
+                viewBox="0 0 17.56005859375 15.43994140625"
+                fill="none"
+              >
+                <path
+                  id="Subtract"
+                  fill-rule="evenodd"
+                  fill="url(#linear_0)"
+                  opacity="1"
+                  d="M10.23,14.85c-0.35,0.37 -0.82,0.56 -1.32,0.59h-0.06c-0.47,0 -0.94,-0.19 -1.28,-0.5l-0.09,-0.09l-6.97,-7.38c-0.63,-0.69 -0.69,-1.75 -0.1,-2.47l3.44,-4.28c0.37,-0.47 0.91,-0.72 1.47,-0.72h6.94c0.56,0 1.12,0.28 1.47,0.72l3.43,4.28c0.57,0.72 0.53,1.78 -0.12,2.5zM12.1002,6.29l-3.25,3.47l-3.34,-3.54c-0.25,-0.25 -0.63,-0.28 -0.91,-0.03c-0.25,0.22 -0.25,0.63 -0.03,0.88l3.38,3.56l0.06,0.07c0.5,0.47 1.28,0.43 1.78,-0.07l3.25,-3.53c0.22,-0.25 0.22,-0.66 -0.03,-0.88c-0.28,-0.21 -0.66,-0.18 -0.91,0.07z"
+                ></path>
+                <defs>
+                  <linearGradient
+                    id="linear_0"
+                    x1="50%"
+                    y1="0%"
+                    x2="51%"
+                    y2="100%"
+                    gradientUnits="objectBoundingBox"
+                  >
+                    <stop offset="0" stop-color="#F0DBBE" stop-opacity="1" />
+                    <stop offset="1" stop-color="#ECCCA0" stop-opacity="1" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="vip-msg mx-3">
+              <div class="vip-msg-title">会员</div>
+              <div class="vip-msg-des">成为会员30天可得192元通用充值券</div>
+            </div>
+            <div
+              class="vip-join d-flex align-items-center justify-content-center"
+            >
+              <div class="vip-join-text">开通</div>
+            </div>
+          </div>
+          <div class="my-sore mb-3 d-flex bg-white">
+            <div class="my-sore-title">
+              我的信用分 <span class="sore-number">300</span>
+            </div>
+            <div class="sore-chevron-right">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-chevron-right"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="my-trade mb-3 bg-white">
+            <div class="my-trade-title">我的交易</div>
+            <div class="my-trade-option d-flex">
+              <div class="my-trade-item col option-1">
+                <div class="bg-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="1em"
+                    fill="currentColor"
+                    viewBox="0 0 576 512"
+                  >
+                    <path
+                      d="M264.5 5.2c14.9-6.9 32.1-6.9 47 0l218.6 101c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0L45.9 149.8C37.4 145.8 32 137.3 32 128s5.4-17.9 13.9-21.8L264.5 5.2zM476.9 209.6l53.2 24.6c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0L45.9 277.8C37.4 273.8 32 265.3 32 256s5.4-17.9 13.9-21.8l53.2-24.6 152 70.2c23.4 10.8 50.4 10.8 73.8 0l152-70.2zm-152 198.2l152-70.2 53.2 24.6c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0L45.9 405.8C37.4 401.8 32 393.3 32 384s5.4-17.9 13.9-21.8l53.2-24.6 152 70.2c23.4 10.8 50.4 10.8 73.8 0z"
+                    />
+                  </svg>
+                </div>
+                <div class="item-text">
+                  <span>我的货架 0</span>
+                </div>
+              </div>
+              <div class="my-trade-item col option-2">
+                <div class="bg-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="1em"
+                    fill="currentColor"
+                    viewBox="0 0 512 512"
+                  >
+                    <path
+                      d="M128 32V64H80c-26.5 0-48 21.5-48 48v48H480V112c0-26.5-21.5-48-48-48H384V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H192V32c0-17.7-14.3-32-32-32s-32 14.3-32 32zM480 192H32V464c0 26.5 21.5 48 48 48H432c26.5 0 48-21.5 48-48V192zM256 248c13.3 0 24 10.7 24 24v56h56c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v56c0 13.3-10.7 24-24 24s-24-10.7-24-24V376H176c-13.3 0-24-10.7-24-24s10.7-24 24-24h56V272c0-13.3 10.7-24 24-24z"
+                    />
+                  </svg>
+                </div>
+                <div class="item-text">
+                  <span>我卖出的 0</span>
+                </div>
+              </div>
+              <div class="my-trade-item col option-3">
+                <div class="bg-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="1em"
+                    fill="currentColor"
+                    viewBox="0 0 512 512"
+                  >
+                    <path
+                      d="M160 0c17.7 0 32 14.3 32 32V64H320V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H32V112c0-26.5 21.5-48 48-48h48V32c0-17.7 14.3-32 32-32zM32 192H480V464c0 26.5-21.5 48-48 48H80c-26.5 0-48-21.5-48-48V192zM344 376c13.3 0 24-10.7 24-24s-10.7-24-24-24H168c-13.3 0-24 10.7-24 24s10.7 24 24 24H344z"
+                    />
+                  </svg>
+                </div>
+                <div class="item-text">
+                  <span>我买到的 0</span>
+                </div>
+              </div>
+              <div class="my-trade-item col option-4">
+                <div class="bg-icon d-flex">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 448 512"
+                  >
+                    <path
+                      d="M0 80V229.5c0 17 6.7 33.3 18.7 45.3l176 176c25 25 65.5 25 90.5 0L418.7 317.3c25-25 25-65.5 0-90.5l-176-176c-12-12-28.3-18.7-45.3-18.7H48C21.5 32 0 53.5 0 80zm112 32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
+                    />
+                  </svg>
+                </div>
+                <div class="item-text">
+                  <span>我的还价 0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="more-bottom bg-white">
+            <div class="more-bottom-title">更多</div>
+          </div>
+          <div
+            class="bottom-bar w-100 d-flex align-items-center justify-content-between"
+          >
+            <div class="bottom-bar-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-house-door"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z"
+                />
+              </svg>
+
+              <div class="text">首页</div>
+            </div>
+
+            <div class="bottom-bar-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-compass"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 16.016a7.5 7.5 0 0 0 1.962-14.74A1 1 0 0 0 9 0H7a1 1 0 0 0-.962 1.276A7.5 7.5 0 0 0 8 16.016zm6.5-7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"
+                />
+                <path
+                  d="m6.94 7.44 4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z"
+                />
+              </svg>
+
+              <div class="text">社区</div>
+            </div>
+
+            <div class="bottom-bar-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-boxes"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434L7.752.066ZM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567L4.25 7.504ZM7.5 9.933l-2.75 1.571v3.134l2.75-1.571V9.933Zm1 3.134 2.75 1.571v-3.134L8.5 9.933v3.134Zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567-2.742 1.567Zm2.242-2.433V3.504L8.5 5.076V8.21l2.75-1.572ZM7.5 8.21V5.076L4.75 3.504v3.134L7.5 8.21ZM5.258 2.643 8 4.21l2.742-1.567L8 1.076 5.258 2.643ZM15 9.933l-2.75 1.571v3.134L15 13.067V9.933ZM3.75 14.638v-3.134L1 9.933v3.134l2.75 1.571Z"
+                />
+              </svg>
+
+              <div class="text">游玩</div>
+            </div>
+            <div class="bottom-bar-item task">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-journal-text"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"
+                />
+                <path
+                  d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"
+                />
+                <path
+                  d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"
+                />
+              </svg>
+
+              <div class="text">任务</div>
+            </div>
+            <div class="bottom-bar-item my-select">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="1em"
+                viewBox="0 0 512 512"
+                fill="currentColor"
+              >
+                <path
+                  d="M256 288A144 144 0 1 0 256 0a144 144 0 1 0 0 288zm-94.7 32C72.2 320 0 392.2 0 481.3c0 17 13.8 30.7 30.7 30.7H481.3c17 0 30.7-13.8 30.7-30.7C512 392.2 439.8 320 350.7 320H161.3z"
+                />
+              </svg>
+
+              <div class="text">我的</div>
+            </div>
+          </div>
+        </div>
+        <div class="recharge-page recharge-select" id="recharge-select">
+          <div class="position-relative w-100">
+            <div class="recharge-select-header mb-3">
+              <div
+                class="recharge-select-back"
+                type="button"
+                data-toggle="recharge"
+                data-recharge-target="#recharge-select"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-chevron-left"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+                  />
+                </svg>
+              </div>
+              <div class="recharge-select-title text-center">充值盒币</div>
+            </div>
+            <div class="recharge-select-to mb-3">
+              <div class="text mb-4">充值到</div>
+              <div
+                class="user-show d-flex justify-content-between align-items-center"
+              >
+                <input
+                  type="text"
+                  maxlength="20"
+                  class="user-id"
+                  id="user-id-select"
+                  value="wqyllm91378"
+                />
+                <div class="user-connect">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="1em"
+                    viewBox="0 0 512 512"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M96 0C60.7 0 32 28.7 32 64V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H96zM208 288h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H144c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zM512 80c0-8.8-7.2-16-16-16s-16 7.2-16 16v64c0 8.8 7.2 16 16 16s16-7.2 16-16V80zM496 192c-8.8 0-16 7.2-16 16v64c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm16 144c0-8.8-7.2-16-16-16s-16 7.2-16 16v64c0 8.8 7.2 16 16 16s16-7.2 16-16V336z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="recharge-select-option mb-3">
+              <div class="text">选择盒币充值</div>
+              <div
+                id="recharge-options"
+                class="options d-flex flex-wrap justify-content-between align-items-center"
+              >
+                <div
+                  type="button"
+                  data-top-up-number="100"
+                  class="option-item d-flex flex-column justify-content-center align-items-center"
+                >
+                  <div class="number-in">
+                    <span class="price">100</span><span class="unit">元</span>
+                  </div>
+                  <div class="des">1万盒币</div>
+                </div>
+                <div
+                  type="button"
+                  data-top-up-number="500"
+                  class="option-item d-flex flex-column justify-content-center align-items-center"
+                >
+                  <div class="number-in">
+                    <span class="price">500</span><span class="unit">元</span>
+                  </div>
+                  <div class="des">5万盒币</div>
+                </div>
+                <div
+                  type="button"
+                  data-top-up-number="1000"
+                  class="option-item d-flex flex-column justify-content-center align-items-center"
+                >
+                  <div class="number-in">
+                    <span class="price">1000</span><span class="unit">元</span>
+                  </div>
+                  <div class="des">10万盒币</div>
+                </div>
+                <div
+                  type="button"
+                  data-top-up-number="3000"
+                  class="option-item d-flex flex-column justify-content-center align-items-center"
+                >
+                  <div class="number-in">
+                    <span class="price">3000</span><span class="unit">元</span>
+                  </div>
+                  <div class="des">30万盒币</div>
+                </div>
+                <div
+                  type="button"
+                  data-top-up-number="5000"
+                  class="option-item d-flex flex-column justify-content-center align-items-center"
+                >
+                  <div class="number-in">
+                    <span class="price">5000</span><span class="unit">元</span>
+                  </div>
+                  <div class="des">50万盒币</div>
+                </div>
+                <div
+                  type="button"
+                  data-top-up-number="10000"
+                  class="option-item d-flex flex-column justify-content-center align-items-center"
+                >
+                  <div class="number-in">
+                    <span class="price">10000</span><span class="unit">元</span>
+                  </div>
+                  <div class="des">100万盒币</div>
+                </div>
+              </div>
+              <div class="custom-options">
+                <div class="custom-options-title">自定义金额</div>
+                <div class="pb-2 custom-options-sub">请输入1的倍数</div>
+              </div>
+            </div>
+            <div class="gold-description">
+              <div class="text">盒币说明</div>
+              <div class="des">
+                盒币可用于游戏充值、交易行砍价保证金。盒币不可体现，不可转换为其他货币
+              </div>
+            </div>
+            <div class="confirm-order d-flex">
+              <div class="wallet d-flex align-items-center">
+                <span class="text">钱包支付: </span>
+                <span class="pay-number">0.00</span>
+              </div>
+              <div
+                class="pay-now"
+                id="order-confirm"
+                type="button"
+                data-toggle="recharge-pre-order"
+                data-recharge-target="#recharge-doing"
+                data-select-price="0.00"
+              >
+                立即支付
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="recharge-page recharge-doing" id="recharge-doing">
+          <div class="position-relative page-body w-100">
+            <div class="recharge-doing-header mb-3">
+              <div
+                class="recharge-doing-back"
+                data-toggle="recharge"
+                type="button"
+                data-recharge-target="#recharge-doing"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="1em"
+                  viewBox="0 0 384 512"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+                  />
+                </svg>
+              </div>
+              <div class="recharge-doing-title text-center">付款详情</div>
+            </div>
+            <div class="pay-number-details text-center">
+              <span class="unit">￥</span
+              ><span class="pay-number" data-price>100.00</span>
+            </div>
+            <div class="order-info">
+              <div class="info d-flex justify-content-between">
+                <span>订单信息</span>
+                <span class="right">
+                  账户充值<span class="pay-number" data-price>100</span>元
+                </span>
+              </div>
+              <div class="payment-way d-flex justify-content-between">
+                <span>支付方式</span><span class="way right">支付宝</span>
+              </div>
+            </div>
+
+            <div class="payment-now w-100 d-flex">
+              <div
+                id="payment-btn"
+                class="payment-btn text-center"
+                type="button"
+                data-toggle="recharge-payment"
+                data-recharge-target="#recharge-done"
+              >
+                立即付款
+              </div>
+            </div>
+
+            <div class="payment-loading-mask">
+              <div
+                class="payment-loading d-flex flex-column align-items-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="1em"
+                  viewBox="0 0 448 512"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M377.74 32H70.26C31.41 32 0 63.41 0 102.26v307.48C0 448.59 31.41 480 70.26 480h307.48c38.52 0 69.76-31.08 70.26-69.6-45.96-25.62-110.59-60.34-171.6-88.44-32.07 43.97-84.14 81-148.62 81-70.59 0-93.73-45.3-97.04-76.37-3.97-39.01 14.88-81.5 99.52-81.5 35.38 0 79.35 10.25 127.13 24.96 16.53-30.09 26.45-60.34 26.45-60.34h-178.2v-16.7h92.08v-31.24H88.28v-19.01h109.44V92.34h50.92v50.42h109.44v19.01H248.63v31.24h88.77s-15.21 46.62-38.35 90.92c48.93 16.7 100.01 36.04 148.62 52.74V102.26C447.83 63.57 416.43 32 377.74 32zM47.28 322.95c.99 20.17 10.25 53.73 69.93 53.73 52.07 0 92.58-39.68 117.87-72.9-44.63-18.68-84.48-31.41-109.44-31.41-67.45 0-79.35 33.06-78.36 50.58z"
+                  />
+                </svg>
+                <div class="payment-name">支付宝</div>
+                <div class="payment-spinner">
+                  <div class="spinner-grow delay-1"></div>
+                  <div class="spinner-grow delay-2"></div>
+                  <div class="spinner-grow delay-3"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="recharge-page recharge-page-right recharge-done"
+          id="recharge-done"
+        >
+          <div class="order-done d-flex w-100 justify-content-end">
+            <div
+              class="order-done-btn"
+              type="button"
+              data-toggle="recharge-done"
+              data-recharge-target="#recharge-done"
+            >
+              完成
+            </div>
+          </div>
+
+          <div class="payment-done d-flex flex-column align-items-center">
+            <div class="payment-msg d-flex align-items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="1em"
+                viewBox="0 0 448 512"
+                fill="currentColor"
+              >
+                <path
+                  d="M377.74 32H70.26C31.41 32 0 63.41 0 102.26v307.48C0 448.59 31.41 480 70.26 480h307.48c38.52 0 69.76-31.08 70.26-69.6-45.96-25.62-110.59-60.34-171.6-88.44-32.07 43.97-84.14 81-148.62 81-70.59 0-93.73-45.3-97.04-76.37-3.97-39.01 14.88-81.5 99.52-81.5 35.38 0 79.35 10.25 127.13 24.96 16.53-30.09 26.45-60.34 26.45-60.34h-178.2v-16.7h92.08v-31.24H88.28v-19.01h109.44V92.34h50.92v50.42h109.44v19.01H248.63v31.24h88.77s-15.21 46.62-38.35 90.92c48.93 16.7 100.01 36.04 148.62 52.74V102.26C447.83 63.57 416.43 32 377.74 32zM47.28 322.95c.99 20.17 10.25 53.73 69.93 53.73 52.07 0 92.58-39.68 117.87-72.9-44.63-18.68-84.48-31.41-109.44-31.41-67.45 0-79.35 33.06-78.36 50.58z"
+                />
+              </svg>
+              <div class="msg">支付成功</div>
+            </div>
+            <div class="check-order">查看订单详细信息</div>
+            <div class="arrival-time">
+              <span id="arrival-time" data-arrival-time class="arrival-time-msg"
+                >预计30分钟内到账</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- You can also require other files to run in this process -->
+    <script src="../resource/script/bootstrap.min.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>

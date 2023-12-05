@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../resource/style/bootstrap.min.css" rel="stylesheet" />
+    <link href="./machineError.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="error-window">
+      <div class="row mb-4">
+        <span class="error-tips d-block col-11">授权错误</span>
+      </div>
+      <div
+        class="error-area row align-items-center mb-3 justify-content-center"
+      >
+        <div class="error-icon mr-3 col-auto">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-exclamation-circle-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
+            />
+          </svg>
+        </div>
+
+        <div class="error-msg col-auto">未授权！请联系管理员</div>
+      </div>
+      <div
+        class="register mb-3 mx-2 align-items-center d-flex position-relative"
+      >
+        <div
+          class="position-absolute px-1 d-flex align-items-center input-icon"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-lock-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"
+            />
+          </svg>
+        </div>
+        <div class="col-auto px-0 pl-4 w-100">
+          <input
+            maxlength="16"
+            type="password"
+            placeholder="请输入管理员密码以授权此设备"
+            class="form-control"
+            id="password"
+          />
+        </div>
+      </div>
+      <div class="error-btn-option row justify-content-end">
+        <div class="col-5">
+          <button
+            type="button"
+            class="btn w-100 btn-primary"
+            data-register="mac"
+          >
+            立即授权
+          </button>
+        </div>
+        <div class="col-3">
+          <button type="button" class="btn w-100 btn-danger" data-close="quit">
+            退出
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="./machineError.js"></script>
+  </body>
+</html>

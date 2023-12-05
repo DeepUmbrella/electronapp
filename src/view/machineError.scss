@@ -1,0 +1,33 @@
+body {
+  -webkit-app-region: drag;
+  padding: 20px;
+  border-radius: 12px;
+  background: rgb(239, 246, 255);
+  width: 390px;
+  height: 160px;
+}
+
+.error-window {
+  -webkit-app-region: no-drag;
+  width: 350px;
+  height: 160px;
+
+  .error-tips {
+    color: #dc3545;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .error-area {
+    .error-icon {
+      svg {
+        width: 48px;
+        height: 48px;
+        color: #dc3545;
+      }
+    }
+    .error-msg {
+      font-size: 22px;
+      color: #dc3545;
+    }
+  }
+}

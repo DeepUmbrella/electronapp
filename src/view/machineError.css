@@ -1,0 +1,38 @@
+body {
+  -webkit-app-region: drag;
+  padding: 20px;
+  border-radius: 12px;
+  background: rgb(239, 246, 255);
+}
+
+.error-window {
+  position: relative;
+
+  -webkit-app-region: no-drag;
+  width: 350px;
+  height: 215px;
+}
+.error-window .error-tips {
+  color: #dc3545;
+  font-size: 18px;
+  font-weight: 700;
+}
+.error-window .error-area .error-icon svg {
+  width: 48px;
+  height: 48px;
+  color: #dc3545;
+}
+.error-window .error-area .error-msg {
+  font-size: 22px;
+  color: #dc3545;
+}
+.register .form-control {
+  padding-left: 32px;
+  opacity: 1;
+  border-radius: 4.8px;
+  background: rgba(193, 210, 255, 0.4);
+  font-weight: 700;
+  letter-spacing: 0px;
+  color: rgba(7, 40, 185, 0.7);
+  border: none;
+}
