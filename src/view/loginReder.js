@@ -81,6 +81,7 @@ window.addEventListener("DOMContentLoaded", () => {
             password,
             !!rememberCheckbox.checked
           );
+          window.WinAPI.SendEventToRenderer("login-success");
         } else {
           window.WinAPI.SendEvent("origin-alert", {
             type: "warning",

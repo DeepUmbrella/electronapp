@@ -45,7 +45,7 @@ const SettingWindow = (dependWindow) => {
   });
 };
 
-const LoginWindow = (pass) => {
+const LoginWindow = (pass, updateTray) => {
   let LoginWindow = new BrowserWindow({
     ...DEVICE_PIXEL.LOGIN,
     webPreferences: {
@@ -67,9 +67,28 @@ const LoginWindow = (pass) => {
     // 保存账号密码
     // 更新用户账户名
     // 打开主窗口
-    MainWindow(() => {
+
+    const m = MainWindow(() => {
       LoginWindow.close();
     });
+    const r = RechargeWindow();
+
+    updateTray([
+      {
+        label: "主页",
+        click: async () => {
+          r.hide();
+          m.show();
+        },
+      },
+      {
+        label: "登记",
+        click: async () => {
+          m.hide();
+          r.show();
+        },
+      },
+    ]);
 
     // 关闭登录窗口
   });
@@ -126,7 +145,7 @@ const MainWindow = (callback) => {
     transparent: false,
     icon: path.join(__dirname, "./src/resource/icon/icon.png"),
   });
-  registerClose(mainWindow, "Main");
+  registerClose(mainWindow, "main");
   // and load the index.html of the app.
   mainWindow.loadFile("./src/view/main.html");
 
@@ -141,12 +160,76 @@ const MainWindow = (callback) => {
   mainWindow.on("closed", () => {
     mainWindow = null;
   });
+
+  return mainWindow;
+};
+
+const RechargeWindow = (callback) => {
+  let rechargeWindow = new BrowserWindow({
+    ...DEVICE_PIXEL.RECHARGE,
+    name: 100,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+    },
+    show: false,
+    resizable: false,
+    frame: false,
+    transparent: false,
+    icon: path.join(__dirname, "./src/resource/icon/icon.png"),
+  });
+
+  registerClose(rechargeWindow, "recharge");
+  ipcMain.on("recharge-setting-update", (e, ...args) => {
+    rechargeWindow.webContents.send("recharge-setting-update", ...args);
+  });
+
+  RechargeSettingWindow(rechargeWindow);
+
+  rechargeWindow.loadFile("./src/view/RechargeRegistration/index.html");
+
+  return rechargeWindow;
+};
+
+const RechargeSettingWindow = (dependWindow) => {
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+
+  let rechargeSettingWindow = new BrowserWindow({
+    ...DEVICE_PIXEL.SETTING,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+    },
+    x: width - DEVICE_PIXEL.SETTING.width, // 设置左下角 x 坐标
+    y: height - DEVICE_PIXEL.SETTING.height,
+    resizable: false,
+    frame: false,
+    transparent: false,
+    icon: path.join(__dirname, "./src/resource/icon/icon.png"),
+  });
+
+  rechargeSettingWindow.loadFile(
+    "./src/view/RechargeRegistration/setting.html"
+  );
+
+  dependWindow.on("closed", () => {
+    rechargeSettingWindow.close();
+  });
+
+  dependWindow.on("show", () => {
+    rechargeSettingWindow.show();
+  });
+
+  dependWindow.on("hide", () => {
+    rechargeSettingWindow.hide();
+  });
+  rechargeSettingWindow.on("closed", () => {
+    rechargeSettingWindow = null;
+  });
 };
 
 function createWindow(pass) {
-  createTray(app);
+  updateTray = createTray(app);
 
-  LoginWindow(pass);
+  LoginWindow(pass, updateTray);
 
   // Create the browser window.
 }

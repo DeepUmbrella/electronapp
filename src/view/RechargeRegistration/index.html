@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../resource/style/bootstrap.min.css" rel="stylesheet" />
+    <link href="./index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="recharge-container">
+      <div class="main-close" type="button" data-close="process">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1em"
+          viewBox="0 0 512 512"
+          fill="currentColor"
+        >
+          <path
+            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"
+          />
+        </svg>
+      </div>
+      <form id="recharge-form">
+        <div id="recharge-number">1000.00元</div>
+        <div class="input-group">
+          <select class="form-select" id="inputGroupSelect04">
+            <option selected>角色名称</option>
+            <option value="超级大傻吊">超级大傻吊</option>
+            <option value="snake man">snake man</option>
+            <option value="umbrella">umbrella</option>
+          </select>
+
+          <input type="text" class="form-control" id="username" />
+
+          <button class="btn btn-outline-secondary" type="submit">
+            确认登记
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="recharge-success">
+      <span>提交成功</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-check-circle"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
+        />
+        <path
+          d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"
+        />
+      </svg>
+    </div>
+    <div id="loading" class="full-loading">
+      <div
+        class="spinner-border"
+        style="width: 3rem; height: 3rem"
+        role="status"
+      ></div>
+    </div>
+    <script src="../../resource/script/bootstrap.min.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>

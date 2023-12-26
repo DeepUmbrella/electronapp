@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../resource/style/bootstrap.min.css" rel="stylesheet" />
+    <link href="./setting.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="setting-container">
+      <div class="row mb-4 mx-0 align-items-center">
+        <span class="setting-tips d-block col-11">设置</span>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+          id="error-close-button"
+        ></button>
+      </div>
+      <form id="setting-form">
+        <div class="input-group mb-3 flex-nowrap">
+          <span class="input-group-text" for="balance">金额</span>
+          <input
+            id="balance"
+            maxlength="30"
+            type="text"
+            class="form-control"
+            placeholder="金额"
+            value="1000.00元"
+          />
+        </div>
+        <div class="mb-3 mx-0 row align-items-center justify-content-center">
+          <button type="submit" class="w-100 btn btn-primary">应用设置</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="../../resource//script/bootstrap.min.js"></script>
+    <script src="./setting.js"></script>
+  </body>
+</html>
