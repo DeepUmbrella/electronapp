@@ -4,6 +4,26 @@ body {
   border-radius: 12px;
   background: rgb(239, 246, 255);
 }
+.full-loading {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-loading.loading {
+  display: flex;
+}
+.check_mac {
+  margin-left: 20px;
+  font-size: 20px;
+  color: #dc3545;
+}
 
 .error-window {
   position: relative;

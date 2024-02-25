@@ -1,19 +1,18 @@
 const os = require("os");
 const crypto = require("crypto");
 const fs = require("fs");
-const path = require("path");
-const userHomeDir = require("os").homedir();
 
-const adminPassword = "ef40fd3e6d2a";
+const axioslib = require("axios");
+
+const HOST = "http://localhost:3000";
+
+const axios = axioslib.create({
+  baseURL: HOST,
+  //超时15秒
+  timeout: 15000,
+});
 
 const SecretKey = "chaojidashadiao";
-
-const CONFIG_PATH = "paymenttoolconfig.txt";
-
-let config = {
-  mac: "",
-  userinfo: {},
-};
 
 function generateUniqueValue() {
   const cpus = os.cpus();
@@ -30,126 +29,66 @@ function generateUniqueValue() {
   return uniqueValue;
 }
 
-const initialConfig = (conf) => {
-  fs.writeFileSync(path.join(userHomeDir, CONFIG_PATH), conf, "utf8");
-};
+const mac_id = generateUniqueValue();
 
-const loadConfig = async () => {
+const registerMac = async () => {
   try {
-    if (fs.existsSync(path.join(userHomeDir, CONFIG_PATH))) {
-      const localConfig = fs.readFileSync(
-        path.join(userHomeDir, CONFIG_PATH),
-        "utf8"
-      );
-      const { mac, userinfo } = JSON.parse(localConfig);
+    const results = await axios.get(`/register_machine?mac_id=${mac_id}`);
 
-      if (!mac) {
-        return false;
-      }
-
-      config.mac = mac;
-      config.userinfo = userinfo;
-    } else {
-      initialConfig(JSON.stringify(config));
-    }
-
-    return true;
-  } catch (error) {
-    console.log(error);
-    return false;
-  }
-};
-
-const validateAdminPassword = (password) => {
-  return password === adminPassword;
-};
-
-const registerMac = async (password) => {
-  const pass = validateAdminPassword(password);
-
-  if (!pass) {
-    return false;
-  }
-
-  try {
-    const mac = generateUniqueValue();
-    config.mac = mac;
-    fs.writeFileSync(
-      path.join(userHomeDir, CONFIG_PATH),
-      JSON.stringify(config),
-      "utf8"
-    );
-
-    return true;
+    return results.data?.result;
   } catch (error) {
     return false;
   }
 };
-
-const registerUser = (username, password) => {
+const checkMac = async () => {
   try {
-    const key = crypto
-      .createHash("md5")
-      .update(username + SecretKey)
-      .digest("hex");
-    const value = crypto
-      .createHash("md5")
-      .update(password + SecretKey)
-      .digest("hex");
+    const results = await axios.get(`/check_machine?mac_id=${mac_id}`);
 
-    if (config.userinfo[key]) {
-      return false;
-    }
-
-    config.userinfo[key] = value;
-    fs.writeFileSync(
-      path.join(userHomeDir, CONFIG_PATH),
-      JSON.stringify(config),
-      "utf8"
-    );
-
-    return true;
+    return {
+      register: results.data?.result === "success",
+      mac_id: mac_id.slice(0, 10),
+    };
   } catch (error) {
-    return false;
+    return {
+      register: false,
+      mac_id: mac_id.slice(0, 10),
+    };
   }
 };
 
-const loginUser = (username, password) => {
+const registerUser = async (username, password) => {
   try {
-    const key = crypto
-      .createHash("md5")
-      .update(username + SecretKey)
-      .digest("hex");
-    const value = crypto
-      .createHash("md5")
-      .update(password + SecretKey)
-      .digest("hex");
-
-    return config?.userinfo[key] === value;
+    const results = await axios.post(`/register_user`, {
+      username,
+      password,
+    });
+    return {
+      register: results.data?.result === "success",
+      message: results.data?.message ?? "",
+    };
   } catch (error) {
-    return false;
+    return {
+      register: false,
+      message: "unknown error",
+    };
   }
 };
 
-const macAllow = async () => {
+const loginUser = async (username, password) => {
   try {
-    const uniqueValue = generateUniqueValue();
-
-    if (!config.mac) {
-      return false;
-    }
-
-    return config.mac === uniqueValue;
+    const results = await axios.post(`${HOST}/login`, {
+      username,
+      password,
+    });
+    return results.data?.result === "success";
   } catch (error) {
     return false;
   }
 };
 
 module.exports = {
-  macAllow,
-  loadConfig,
   loginUser,
+  checkMac,
   registerMac,
   registerUser,
-  validateAdminPassword,
 };

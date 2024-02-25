@@ -25,36 +25,16 @@ ipcMain.handle("close-quit", async () => {
   app.quit();
 });
 
-ipcMain.handle("login", async (e, username, password, adminLogin) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (adminLogin) {
-        resolve(validateAdminPassword(password));
-        return;
-      }
-      resolve(loginUser(username, password));
-    }, 3000);
-  });
+ipcMain.handle("login", async (e, username, password) => {
+  const results = await loginUser(username, password);
+  return results;
 });
 
-ipcMain.handle(
-  "register",
-  async (e, username, password, adminLoginPassword) => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const pass = validateAdminPassword(adminLoginPassword);
-        if (!pass) {
-          return resolve("admin");
-        }
-        const success = registerUser(username, password);
-        if (!success) {
-          return resolve("fail");
-        }
-        resolve("");
-      }, 3000);
-    });
-  }
-);
+ipcMain.handle("register", async (e, username, password) => {
+  const results = await registerUser(username, password);
+
+  return results;
+});
 
 ipcMain.handle("origin-alert", async (e, options) => {
   const {

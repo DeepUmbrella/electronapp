@@ -1,53 +1,22 @@
 window.addEventListener("DOMContentLoaded", () => {
   const loadingElement = document.querySelector("#loading");
 
-  const adminSelect = document.querySelector("#adminlogin");
-
-  const adminPasswordInput = document.querySelector("#admin-password");
-
-  const adminContainer = document.querySelector(".admin-password");
-
-  adminSelect.addEventListener("change", (e) => {
-    if (e.target.checked) {
-      adminContainer.classList.remove("d-none");
-    } else {
-      adminContainer.classList.add("d-none");
-    }
-  });
-
   let onlogin = false;
   const loginUser = () => {
     if (onlogin) {
       return;
     }
+    const username = document.querySelector("#username").value;
+    const password = document.querySelector("#password").value;
 
-    var username = document.querySelector("#username").value;
-    var password = document.querySelector("#password").value;
-    var adminPassword = adminPasswordInput.value;
-    var adminloginCheck = document.querySelector("#adminlogin").checked;
-
-    if (adminloginCheck) {
-      if (!adminPassword) {
-        window.WinAPI.SendEvent("origin-alert", {
-          type: "warning",
-          title: "密码！",
-          message: "请输入管理员密码",
-          buttons: ["确定"],
-        });
-        return;
-      }
-      password = adminPassword;
-      //todo
-    } else {
-      if (!username || !password) {
-        window.WinAPI.SendEvent("origin-alert", {
-          type: "warning",
-          title: "用户名和密码！",
-          message: "请输入用户名和密码",
-          buttons: ["确定"],
-        });
-        return;
-      }
+    if (!username || !password) {
+      window.WinAPI.SendEvent("origin-alert", {
+        type: "warning",
+        title: "用户名和密码！",
+        message: "请输入用户名和密码",
+        buttons: ["确定"],
+      });
+      return;
     }
 
     // Check if the user has agreed to the terms
@@ -72,21 +41,16 @@ window.addEventListener("DOMContentLoaded", () => {
     onlogin = true;
     loadingElement.classList.add("loading");
 
-    window.WinAPI.SendEvent("login", username, password, adminloginCheck)
+    window.WinAPI.SendEvent("login", username, password)
       .then((res) => {
         if (res) {
-          window.WinAPI.SendEvent(
-            "login-success",
-            username,
-            password,
-            !!rememberCheckbox.checked
-          );
+          window.WinAPI.SendEvent("login-success");
           window.WinAPI.SendEventToRenderer("login-success");
         } else {
           window.WinAPI.SendEvent("origin-alert", {
             type: "warning",
-            title: adminloginCheck ? "管理员" : "用户名和密码！",
-            message: "管理员身份校验未通过",
+            title: "用户名和密码！",
+            message: "用户名或密码错误！",
             buttons: ["确定"],
           });
         }
@@ -112,37 +76,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
     var username = document.querySelector("#username").value;
     var password = document.querySelector("#password").value;
-    var adminPassword = adminPasswordInput.value;
-
-    var adminloginCheck = adminSelect.checked;
 
     if (!username || !password) {
       window.WinAPI.SendEvent("origin-alert", {
         type: "warning",
         title: "用户名和密码！",
         message: "请输入要新增的用户名和密码",
-        buttons: ["确定"],
-      });
-      return;
-    }
-
-    if (!adminloginCheck) {
-      adminSelect.checked = true;
-      adminContainer.classList.remove("d-none");
-      window.WinAPI.SendEvent("origin-alert", {
-        type: "warning",
-        title: "授权",
-        message: "新用户必须通过管理员授权！请输入管理员密码！",
-        buttons: ["确定"],
-      });
-      return;
-    }
-
-    if (!adminPassword) {
-      window.WinAPI.SendEvent("origin-alert", {
-        type: "warning",
-        title: "密码！",
-        message: "请输入管理员密码",
         buttons: ["确定"],
       });
       return;
@@ -170,30 +109,19 @@ window.addEventListener("DOMContentLoaded", () => {
     onlogin = true;
     loadingElement.classList.add("loading");
 
-    window.WinAPI.SendEvent("register", username, password, adminPassword)
+    window.WinAPI.SendEvent("register", username, password)
       .then((res) => {
-        if (res === "admin") {
-          window.WinAPI.SendEvent("origin-alert", {
-            type: "warning",
-            title: "管理员授权",
-            message: "管理员密码错误，不能注册！",
-            buttons: ["确定"],
-          });
-          return;
-        }
-        if (res === "fail") {
+        const { register, message } = res;
+
+        if (!register) {
           window.WinAPI.SendEvent("origin-alert", {
             type: "warning",
             title: "注册失败",
-            message: "用户已存在或写入失败",
+            message,
             buttons: ["确定"],
           });
           return;
         }
-
-        adminPasswordInput.value = "";
-        adminContainer.classList.add("d-none");
-        adminSelect.checked = false;
 
         window.WinAPI.SendEvent("origin-alert", {
           type: "warning",

@@ -5,11 +5,7 @@ const { app, BrowserWindow, screen, ipcMain, dialog } = require("electron");
 const { createTray } = require("./src/tray");
 const { registerClose } = require("./src/event");
 const path = require("node:path");
-const {
-  macAllow,
-  loadConfig,
-  registerMac,
-} = require("./src/prelogin/generateUniqueValue");
+const { registerMac, checkMac } = require("./src/prelogin/generateUniqueValue");
 
 const SettingWindow = (dependWindow) => {
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
@@ -30,7 +26,7 @@ const SettingWindow = (dependWindow) => {
   SettingWindow.loadFile("./src/view/setting.html");
 
   dependWindow.on("closed", () => {
-    SettingWindow.close();
+    SettingWindow?.close();
   });
 
   dependWindow.on("show", () => {
@@ -58,9 +54,7 @@ const LoginWindow = (pass, updateTray) => {
     icon: path.join(__dirname, "./src/resource/icon/icon.png"),
   });
 
-  if (!pass) {
-    MachineErrorWindow(LoginWindow);
-  }
+  MachineErrorWindow(LoginWindow);
 
   LoginWindow.loadFile("./src/view/login.html");
   ipcMain.handle("login-success", async (e, username, password, save) => {
@@ -68,10 +62,10 @@ const LoginWindow = (pass, updateTray) => {
     // 更新用户账户名
     // 打开主窗口
 
-    const m = MainWindow(() => {
+    let m = MainWindow(() => {
       LoginWindow.close();
     });
-    const r = RechargeWindow();
+    let r = RechargeWindow();
 
     updateTray([
       {
@@ -110,20 +104,19 @@ const MachineErrorWindow = (LoginWindow) => {
     icon: path.join(__dirname, "./src/resource/icon/icon.png"),
   });
 
-  ipcMain.handle("register-mac", async (e, password) => {
-    const res = await registerMac(password);
-    const signal = await dialog.showMessageBoxSync({
-      type: res ? "info" : "error",
-      title: res ? "成功" : "失败",
-      message: res ? "授权成功" : "授权失败！",
-      buttons: ["确定"],
-    });
-    if (res) {
+  ipcMain.handle("check-mac", async (e) => {
+    const { register, mac_id } = await checkMac();
+    if (register) {
       LoginWindow.show();
       window_instance.close();
+      return;
     }
+    return mac_id;
+  });
 
-    return res;
+  ipcMain.handle("register-mac", async (e) => {
+    const result = await registerMac();
+    return result;
   });
 
   window_instance.loadFile("./src/view/machineError.html");
@@ -145,7 +138,7 @@ const MainWindow = (callback) => {
     transparent: false,
     icon: path.join(__dirname, "./src/resource/icon/icon.png"),
   });
-  registerClose(mainWindow, "main");
+
   // and load the index.html of the app.
   mainWindow.loadFile("./src/view/main.html");
 
@@ -178,7 +171,6 @@ const RechargeWindow = (callback) => {
     icon: path.join(__dirname, "./src/resource/icon/icon.png"),
   });
 
-  registerClose(rechargeWindow, "recharge");
   ipcMain.on("recharge-setting-update", (e, ...args) => {
     rechargeWindow.webContents.send("recharge-setting-update", ...args);
   });
@@ -186,7 +178,10 @@ const RechargeWindow = (callback) => {
   RechargeSettingWindow(rechargeWindow);
 
   rechargeWindow.loadFile("./src/view/RechargeRegistration/index.html");
-
+  rechargeWindow.on("closed", () => {
+    rechargeWindow = null;
+    app.quit();
+  });
   return rechargeWindow;
 };
 
@@ -198,6 +193,7 @@ const RechargeSettingWindow = (dependWindow) => {
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
+    show: false,
     x: width - DEVICE_PIXEL.SETTING.width, // 设置左下角 x 坐标
     y: height - DEVICE_PIXEL.SETTING.height,
     resizable: false,
@@ -211,7 +207,7 @@ const RechargeSettingWindow = (dependWindow) => {
   );
 
   dependWindow.on("closed", () => {
-    rechargeSettingWindow.close();
+    rechargeSettingWindow?.close();
   });
 
   dependWindow.on("show", () => {
@@ -223,12 +219,12 @@ const RechargeSettingWindow = (dependWindow) => {
   });
   rechargeSettingWindow.on("closed", () => {
     rechargeSettingWindow = null;
+    app.quit();
   });
 };
 
 function createWindow(pass) {
   updateTray = createTray(app);
-
   LoginWindow(pass, updateTray);
 
   // Create the browser window.
@@ -238,11 +234,7 @@ function createWindow(pass) {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(async () => {
-  const readConfig = await loadConfig();
-
-  const passMac = await macAllow();
-
-  createWindow(passMac);
+  createWindow();
   //
   app.on("activate", function () {
     // On macOS it's common to re-create a window in the app when the
@@ -258,6 +250,9 @@ app.on("window-all-closed", function () {
   if (process.platform !== "darwin") app.quit();
 });
 
+app.on("before-quit", (event) => {
+  BrowserWindow.getAllWindows().forEach((window) => window.destroy());
+});
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 

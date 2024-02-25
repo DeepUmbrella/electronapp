@@ -35,43 +35,20 @@
 
         <div class="error-msg col-auto">未授权！请联系管理员</div>
       </div>
-      <div
-        class="register mb-3 mx-2 align-items-center d-flex position-relative"
-      >
-        <div
-          class="position-absolute px-1 d-flex align-items-center input-icon"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-lock-fill"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"
-            />
-          </svg>
-        </div>
-        <div class="col-auto px-0 pl-4 w-100">
-          <input
-            maxlength="16"
-            type="password"
-            placeholder="请输入管理员密码以授权此设备"
-            class="form-control"
-            id="password"
-          />
-        </div>
-      </div>
+      <div id="mac-id"></div>
       <div class="error-btn-option row justify-content-end">
-        <div class="col-5">
+        <div class="col-4">
           <button
             type="button"
             class="btn w-100 btn-primary"
             data-register="mac"
           >
-            立即授权
+            申请授权
+          </button>
+        </div>
+        <div class="col-4">
+          <button type="button" class="btn w-100 btn-primary" data-check="mac">
+            刷新授权
           </button>
         </div>
         <div class="col-3">
@@ -81,6 +58,15 @@
         </div>
       </div>
     </div>
+    <div id="loading" class="full-loading">
+      <div
+        class="spinner-border"
+        style="width: 3rem; height: 3rem"
+        role="status"
+      ></div>
+      <div class="check_mac">设备授权信息查询中...</div>
+    </div>
+    <script src="./../resource/script/bootstrap.min.js"></script>
     <script src="./machineError.js"></script>
   </body>
 </html>
