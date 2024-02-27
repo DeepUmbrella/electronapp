@@ -1,9 +1,5 @@
 const { ipcMain, app, dialog, BrowserWindow } = require("electron");
-const {
-  loginUser,
-  validateAdminPassword,
-  registerUser,
-} = require("./prelogin/generateUniqueValue");
+const { loginUser, registerUser } = require("./api");
 
 ipcMain.handle("close-process", async () => {
   const signal = await dialog.showMessageBoxSync(
@@ -32,7 +28,6 @@ ipcMain.handle("login", async (e, username, password) => {
 
 ipcMain.handle("register", async (e, username, password) => {
   const results = await registerUser(username, password);
-
   return results;
 });
 

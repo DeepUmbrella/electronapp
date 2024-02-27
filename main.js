@@ -5,7 +5,7 @@ const { app, BrowserWindow, screen, ipcMain, dialog } = require("electron");
 const { createTray } = require("./src/tray");
 const { registerClose } = require("./src/event");
 const path = require("node:path");
-const { registerMac, checkMac } = require("./src/prelogin/generateUniqueValue");
+const { registerMac, checkMac } = require("./src/api");
 
 const SettingWindow = (dependWindow) => {
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
