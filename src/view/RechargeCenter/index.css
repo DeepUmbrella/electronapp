@@ -1,0 +1,248 @@
+@charset "UTF-8";
+.window-container {
+  position: relative;
+  min-height: 250px;
+}
+.window-container .main-close {
+  -webkit-app-region: no-drag;
+  position: absolute;
+  top: 5px;
+  right: 20px;
+}
+
+.center-container {
+  background-color: #f0f0f0;
+}
+
+.full-loading {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.full-loading.loading {
+  display: flex;
+}
+
+.center-header {
+  align-items: center;
+  justify-content: center;
+  -webkit-app-region: drag;
+}
+.center-header .center-header-title {
+  font-weight: 700;
+  font-size: 28px;
+}
+
+.center-body {
+  margin: 0 10px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+.center-body .center-body-item {
+  padding: 10px 0;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #333;
+}
+.center-body .center-body-item .item-label {
+  padding-left: 20px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.center-body .center-body-item .item-pay-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: #e52e2e;
+}
+.center-body .center-body-item .item-pay-number,
+.center-body .center-body-item .recharge-input {
+  text-align: center;
+  width: 300px;
+}
+.center-body .center-body-item .form-control {
+  border-color: #333 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.center-footer {
+  padding: 20px 50px;
+  align-items: center;
+  justify-content: space-between;
+}
+.center-footer .pay-ways-label {
+  font-size: 20px;
+  font-weight: 700;
+}
+.center-footer .pay-ways {
+  flex: 1;
+  justify-content: space-around;
+  padding: 0 30px;
+}
+.center-footer .pay-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.center-footer .pay-item .pay-text {
+  text-align: right;
+  min-width: 40px;
+  font-weight: 700;
+  font-size: 16px;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+.center-footer .pay-item.select::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.4;
+}
+.center-footer .pay-item.select::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent; /* 调整边长以控制三角形大小 */
+  border-top: 20px solid transparent; /* 调整边长以控制三角形大小 */
+  border-right: 20px solid #21e100;
+}
+.center-footer .pay-icon {
+  width: 32px;
+  height: 32px;
+}
+.center-footer .pay-icon.bi-alipay {
+  color: rgb(13, 110, 253);
+  width: 28px;
+  height: 28px;
+}
+.center-footer .pay-ways-confirm {
+  width: 200px;
+}
+.center-footer .pay-ways-confirm .btn {
+  width: 100%;
+  border-color: #ffb900;
+  background-color: #ffb900;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.payment-loading-mask {
+  display: none;
+  top: 0;
+  left: 0;
+  border-radius: 20px 20px 0 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+.payment-loading-mask .payment-loading {
+  padding: 10px 30px;
+  background-color: black;
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.payment-loading-mask .payment-loading .spinner-border,
+.payment-loading-mask .payment-loading .payment-name {
+  color: #fff;
+}
+.payment-loading-mask .payment-loading .bi-check2-circle {
+  width: 36px;
+  height: 36px;
+  color: #fff;
+}
+.payment-loading-mask.show-loading {
+  display: block;
+}
+
+.pay-tips {
+  padding: 20px;
+  height: 205px;
+}
+.pay-tips .pay-tips-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  height: 130px;
+}
+.pay-tips .pay-ways-qrcode {
+  justify-content: flex-end;
+}
+.pay-tips .pay-ways-confirm {
+  width: 200px;
+}
+.pay-tips .pay-ways-confirm .btn {
+  width: 100%;
+  border-color: #ffb900;
+  background-color: #ffb900;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.ali-pay-qrcode .qr-container {
+  height: 180px;
+  justify-content: center;
+  align-items: center;
+}
+.ali-pay-qrcode .qr-info {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+}
+.ali-pay-qrcode .qr-code {
+  position: relative;
+}
+.ali-pay-qrcode .qr-code .qr-code-icon {
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2px;
+  border-radius: 2px;
+}
+.ali-pay-qrcode .qr-code .qr-code-icon .bi-alipay {
+  color: rgb(13, 110, 253);
+  width: 28px;
+  height: 28px;
+}
+.ali-pay-qrcode .qr-code .qr-scan-success {
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ali-pay-qrcode .qr-code .qr-scan-success .qr-scan-success-icon {
+  color: #fff;
+}
+.ali-pay-qrcode .qr-code .qr-scan-success .qr-scan-success-icon .bi-check2-circle {
+  width: 36px;
+  height: 36px;
+  color: #fff;
+}

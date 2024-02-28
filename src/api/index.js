@@ -1,7 +1,7 @@
 const axioslib = require("axios");
 const { mac_id } = require("../prelogin/generateUniqueValue");
 
-const HOST = "http://localhost:3000";
+const HOST = "http://43.136.102.97:3000";
 
 const axios = axioslib.create({
   baseURL: HOST,
@@ -63,9 +63,15 @@ const loginUser = async (username, password) => {
       username,
       password,
     });
-    return results.data?.result === "success";
+    return {
+      message: results.data?.message ?? "",
+      login: results.data?.result === "success",
+    };
   } catch (error) {
-    return false;
+    return {
+      message: "unknown error",
+      login: "false",
+    };
   }
 };
 

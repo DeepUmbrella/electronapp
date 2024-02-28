@@ -31,6 +31,10 @@ const DEVICE_PIXEL = {
     width: 750,
     height: 150,
   },
+  RECHARGE_CENTER: {
+    width: 750,
+    height: 250,
+  },
 };
 
 module.exports = {

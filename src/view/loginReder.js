@@ -42,15 +42,15 @@ window.addEventListener("DOMContentLoaded", () => {
     loadingElement.classList.add("loading");
 
     window.WinAPI.SendEvent("login", username, password)
-      .then((res) => {
-        if (res) {
+      .then(({ login, message }) => {
+        if (login) {
           window.WinAPI.SendEvent("login-success");
           window.WinAPI.SendEventToRenderer("login-success");
         } else {
           window.WinAPI.SendEvent("origin-alert", {
             type: "warning",
-            title: "用户名和密码！",
-            message: "用户名或密码错误！",
+            title: "登陆失败",
+            message,
             buttons: ["确定"],
           });
         }

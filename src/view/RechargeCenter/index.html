@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../resource/style/bootstrap.min.css" rel="stylesheet" />
+    <link href="./index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="window-container position-relative">
+      <div class="center-container">
+        <div class="center-header d-flex position-relative">
+          <div class="center-header-title" id="title">充值中心</div>
+          <div class="main-close" type="button" data-close="process">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-x-lg"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"
+              />
+            </svg>
+          </div>
+        </div>
+        <form id="recharge-form">
+          <div class="center-body">
+            <div class="center-body-item d-flex">
+              <div class="item-label">应付金额</div>
+              <div class="item-pay-number">20000.0元</div>
+            </div>
+            <div class="center-body-item d-flex">
+              <div class="item-label">角色昵称</div>
+              <div class="recharge-input">
+                <input type="text" class="form-control" id="username" />
+              </div>
+            </div>
+          </div>
+          <div class="center-footer d-flex">
+            <div class="pay-ways-label">支付方式</div>
+            <div class="pay-ways d-flex">
+              <div class="pay-item">
+                <div class="pay-icon-container">
+                  <svg
+                    class="pay-icon"
+                    viewBox="0 0 1024 1024"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M395.846 603.585c-3.921 1.98-7.936 2.925-12.81 2.925-10.9 0-19.791-5.85-24.764-14.625l-2.006-3.864-78.106-167.913c-0.956-1.98-0.956-3.865-0.956-5.845 0-7.83 5.928-13.68 13.863-13.68 2.965 0 5.928 0.944 8.893 2.924l91.965 64.43c6.884 3.864 14.82 6.79 23.708 6.79 4.972 0 9.85-0.945 14.822-2.926L861.71 282.479c-77.149-89.804-204.684-148.384-349.135-148.384-235.371 0-427.242 157.158-427.242 351.294 0 105.368 57.361 201.017 147.323 265.447 6.88 4.905 11.852 13.68 11.852 22.45 0 2.925-0.957 5.85-2.006 8.775-6.881 26.318-18.831 69.334-18.831 71.223-0.958 2.92-2.013 6.79-2.013 10.75 0 7.83 5.929 13.68 13.865 13.68 2.963 0 5.928-0.944 7.935-2.925l92.922-53.674c6.885-3.87 14.82-6.794 22.756-6.794 3.916 0 8.889 0.944 12.81 1.98 43.496 12.644 91.012 19.53 139.48 19.53 235.372 0 427.24-157.158 427.24-351.294 0-58.58-17.78-114.143-48.467-163.003l-491.39 280.07-2.963 1.98z"
+                      fill="#09BB07"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="pay-text">微信</div>
+              </div>
+              <div class="pay-item select">
+                <div class="pay-icon-container">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="pay-icon bi bi-alipay"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M2.541 0H13.5a2.55 2.55 0 0 1 2.54 2.563v8.297c-.006 0-.531-.046-2.978-.813-.412-.14-.916-.327-1.479-.536q-.456-.17-.957-.353a13 13 0 0 0 1.325-3.373H8.822V4.649h3.831v-.634h-3.83V2.121H7.26c-.274 0-.274.273-.274.273v1.621H3.11v.634h3.875v1.136h-3.2v.634H9.99c-.227.789-.532 1.53-.894 2.202-2.013-.67-4.161-1.212-5.51-.878-.864.214-1.42.597-1.746.998-1.499 1.84-.424 4.633 2.741 4.633 1.872 0 3.675-1.053 5.072-2.787 2.08 1.008 6.37 2.738 6.387 2.745v.105A2.55 2.55 0 0 1 13.5 16H2.541A2.55 2.55 0 0 1 0 13.437V2.563A2.55 2.55 0 0 1 2.541 0"
+                    />
+                    <path
+                      d="M2.309 9.27c-1.22 1.073-.49 3.034 1.978 3.034 1.434 0 2.868-.925 3.994-2.406-1.602-.789-2.959-1.353-4.425-1.207-.397.04-1.14.217-1.547.58Z"
+                    />
+                  </svg>
+                </div>
+                <div class="pay-text">支付宝</div>
+              </div>
+              <div class="pay-item">
+                <div class="pay-icon-container">
+                  <svg
+                    class="pay-icon"
+                    viewBox="0 0 1024 1024"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M81.6 385.6c-12 36.8-15.2 76.8-15.2 116.8 0 251.2 199.2 454.4 445.6 454.4 245.6 0 445.6-203.2 445.6-454.4 0-183.2-106.4-341.6-260-413.6-56.8-26.4-108.8-32.8-120-3.2-10.4 30.4 30.4 59.2 60 72.8 29.6 13.6 110.4 52 106.4 128-3.2 76-121.6 84.8-192 55.2-69.6-28.8-171.2-72-195.2-52s-28 70.4 28 104c56.8 33.6 180.8 101.6 198.4 187.2 17.6 85.6 4.8 256.8-241.6 184C284.8 748 224 658.4 206.4 619.2c-50.4-112.8 9.6-226.4 32-260 32-48.8 32-96.8-24.8-117.6-54.4-20-98.4 39.2-132 144z"
+                      fill="#30B4FF"
+                    ></path>
+                    <path
+                      d="M576.8 167.2c40.8 16 62.4 54.4 48 85.6-14.4 31.2-59.2 44-100 28s-62.4-54.4-48-85.6c14.4-31.2 59.2-44 100-28z"
+                      fill="#30B4FF"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="pay-text">花呗</div>
+              </div>
+            </div>
+            <div class="pay-ways-confirm">
+              <button class="btn" type="submit">确认支付</button>
+            </div>
+          </div>
+        </form>
+        <div id="pay-tips" class="pay-tips d-none">
+          <div class="pay-tips-title">
+            在您的设备上未检测到支付宝，是否使用二维码进行支付？
+          </div>
+          <div class="pay-ways-qrcode d-flex">
+            <div class="pay-ways-confirm">
+              <button id="qr-confirm" class="btn">确认</button>
+            </div>
+          </div>
+        </div>
+        <div id="ali-pay-qrcode" class="ali-pay-qrcode d-none">
+          <div class="qr-container d-flex">
+            <div id="qr-loading">
+              <div
+                class="spinner-border"
+                style="width: 6rem; height: 6rem"
+                role="status"
+              ></div>
+            </div>
+
+            <div class="qr-code d-none" id="qr-code">
+              <img src="../../resource/icon/generate.png" alt="qr-code" />
+              <div class="qr-code-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-alipay"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M2.541 0H13.5a2.55 2.55 0 0 1 2.54 2.563v8.297c-.006 0-.531-.046-2.978-.813-.412-.14-.916-.327-1.479-.536q-.456-.17-.957-.353a13 13 0 0 0 1.325-3.373H8.822V4.649h3.831v-.634h-3.83V2.121H7.26c-.274 0-.274.273-.274.273v1.621H3.11v.634h3.875v1.136h-3.2v.634H9.99c-.227.789-.532 1.53-.894 2.202-2.013-.67-4.161-1.212-5.51-.878-.864.214-1.42.597-1.746.998-1.499 1.84-.424 4.633 2.741 4.633 1.872 0 3.675-1.053 5.072-2.787 2.08 1.008 6.37 2.738 6.387 2.745v.105A2.55 2.55 0 0 1 13.5 16H2.541A2.55 2.55 0 0 1 0 13.437V2.563A2.55 2.55 0 0 1 2.541 0"
+                  />
+                  <path
+                    d="M2.309 9.27c-1.22 1.073-.49 3.034 1.978 3.034 1.434 0 2.868-.925 3.994-2.406-1.602-.789-2.959-1.353-4.425-1.207-.397.04-1.14.217-1.547.58Z"
+                  />
+                </svg>
+              </div>
+              <div class="qr-scan-success d-none" id="qr-scan-success">
+                <div class="qr-scan-success-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-check2-circle"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"
+                    />
+                    <path
+                      d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="qr-info">请使用手机支付宝的"扫一扫"功能进行扫描支付</div>
+        </div>
+      </div>
+
+      <div class="payment-loading-mask" id="payment-loading-mask">
+        <div class="payment-loading d-flex flex-column align-items-center">
+          <div
+            class="spinner-border"
+            style="width: 3rem; height: 3rem"
+            role="status"
+          ></div>
+          <div class="payment-name">数据加载中</div>
+        </div>
+      </div>
+
+      <div class="payment-loading-mask" id="payment-loading-success">
+        <div class="payment-loading d-flex flex-column align-items-center">
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-check2-circle"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"
+              />
+              <path
+                d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"
+              />
+            </svg>
+          </div>
+          <div class="payment-name">充值成功</div>
+        </div>
+      </div>
+      <div id="loading" class="full-loading">
+        <div
+          class="spinner-border"
+          style="width: 3rem; height: 3rem"
+          role="status"
+        ></div>
+      </div>
+    </div>
+
+    <script src="../../resource/script/bootstrap.min.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>

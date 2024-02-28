@@ -65,7 +65,10 @@ const LoginWindow = (pass, updateTray) => {
     let m = MainWindow(() => {
       LoginWindow.close();
     });
+
     let r = RechargeWindow();
+
+    let rechargeCenter = RechargeCenterWindow();
 
     updateTray([
       {
@@ -73,6 +76,7 @@ const LoginWindow = (pass, updateTray) => {
         click: async () => {
           r.hide();
           m.show();
+          rechargeCenter.hide();
         },
       },
       {
@@ -80,6 +84,15 @@ const LoginWindow = (pass, updateTray) => {
         click: async () => {
           m.hide();
           r.show();
+          rechargeCenter.hide();
+        },
+      },
+      {
+        label: "充值中心",
+        click: async () => {
+          m.hide();
+          r.hide();
+          rechargeCenter.show();
         },
       },
     ]);
@@ -223,10 +236,35 @@ const RechargeSettingWindow = (dependWindow) => {
   });
 };
 
-function createWindow(pass) {
-  updateTray = createTray(app);
-  LoginWindow(pass, updateTray);
+const RechargeCenterWindow = () => {
+  let rechargeWindow = new BrowserWindow({
+    ...DEVICE_PIXEL.RECHARGE_CENTER,
+    name: 100,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+    },
+    show: false,
+    resizable: false,
+    frame: false,
+    transparent: false,
+    icon: path.join(__dirname, "./src/resource/icon/icon.png"),
+  });
 
+  ipcMain.on("recharge-setting-update", (e, ...args) => {
+    rechargeWindow.webContents.send("recharge-setting-update", ...args);
+  });
+
+  rechargeWindow.loadFile("./src/view/RechargeCenter/index.html");
+  rechargeWindow.on("closed", () => {
+    rechargeWindow = null;
+    app.quit();
+  });
+  return rechargeWindow;
+};
+
+function createWindow(pass) {
+  const updateTray = createTray(app);
+  LoginWindow(pass, updateTray);
   // Create the browser window.
 }
 
