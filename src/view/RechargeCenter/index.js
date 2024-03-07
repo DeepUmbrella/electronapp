@@ -11,7 +11,22 @@ window.addEventListener("DOMContentLoaded", () => {
   const rechargeSuccessElement = document.querySelector(
     "#payment-loading-success"
   );
+  const lastLoadingElement = document.querySelector("#payment-last-loading");
   const loginForm = document.querySelector("#recharge-form");
+  const rechargeNumberNumberElement =
+    document.querySelector("#recharge-number");
+  const rechargeDoneElement = document.querySelector("#recharge-done");
+
+  window?.WinAPI?.HandleEvent("recharge-setting-update", (gold) => {
+    rechargeNumberNumberElement.innerHTML = gold;
+  });
+
+  rechargeDoneElement.addEventListener("click", () => {
+    rechargeSuccessElement.classList.remove("show-loading");
+    lastLoadingElement.classList.remove("d-none");
+    loginForm.classList.remove("d-none");
+    titleElement.innerHTML = "充值中心";
+  });
 
   async function qrConfirm() {
     titleElement.innerHTML = "支付";
@@ -22,7 +37,7 @@ window.addEventListener("DOMContentLoaded", () => {
     qrloadingElement.classList.add("d-none");
     qrdcodeElement.classList.remove("d-none");
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 4000));
     qrScanSuccessElement.classList.remove("d-none");
     await new Promise((resolve) => setTimeout(resolve, 2000));
     confirmloadingElement.classList.add("show-loading");
@@ -36,10 +51,7 @@ window.addEventListener("DOMContentLoaded", () => {
     confirmloadingElement.classList.remove("show-loading");
     rechargeSuccessElement.classList.add("show-loading");
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    rechargeSuccessElement.classList.remove("show-loading");
-
-    loginForm.classList.remove("d-none");
-    titleElement.innerHTML = "充值中心";
+    lastLoadingElement.classList.add("d-none");
   }
 
   async function addUserToSelect() {

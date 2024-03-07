@@ -254,6 +254,8 @@ const RechargeCenterWindow = () => {
     rechargeWindow.webContents.send("recharge-setting-update", ...args);
   });
 
+  RechargeSettingWindow(rechargeWindow);
+
   rechargeWindow.loadFile("./src/view/RechargeCenter/index.html");
   rechargeWindow.on("closed", () => {
     rechargeWindow = null;

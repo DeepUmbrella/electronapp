@@ -146,7 +146,6 @@
   display: none;
   top: 0;
   left: 0;
-  border-radius: 20px 20px 0 0;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -199,6 +198,41 @@
   background-color: #ffb900;
   font-size: 16px;
   font-weight: 700;
+}
+
+.recharge-done {
+  color: #fafaf9;
+  background-image: url("../../resource/bg/payment-done.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #f8f9fa;
+  font-weight: 500;
+}
+.recharge-done .order-done .order-done-btn {
+  margin-right: 8px;
+  padding: 8px;
+  font-size: 18px;
+}
+.recharge-done .payment-done .payment-msg {
+  margin-bottom: 10px;
+}
+.recharge-done .payment-done .payment-msg svg {
+  height: 44px;
+  width: 44px;
+}
+.recharge-done .payment-done .payment-msg .msg {
+  font-size: 24px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+.recharge-done .payment-done .check-order {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+.recharge-done .payment-done .arrival-time {
+  font-weight: 700;
+  font-size: 24px;
 }
 
 .ali-pay-qrcode .qr-container {
