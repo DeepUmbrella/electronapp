@@ -318,9 +318,99 @@ body {
 .main-container .recharge-select {
   background-color: #f8f9fa;
 }
+.main-container .recharge-select input,
+.main-container .recharge-select select {
+  border-radius: 5px;
+  background-color: transparent;
+}
+.main-container .recharge-select .options {
+  display: none;
+}
+.main-container .recharge-select[data-show=other] .option-item {
+  background-color: #f1f1f1;
+}
+.main-container .recharge-select[data-show=other] .other {
+  display: flex;
+}
+.main-container .recharge-select[data-show=other] .recharge-select-header,
+.main-container .recharge-select[data-show=other] .recharge-select-to {
+  background-color: #fff;
+  box-shadow: none;
+}
+.main-container .recharge-select[data-show=other] .recharge-select-option {
+  background-color: #fff;
+  border-radius: 5px;
+}
+.main-container .recharge-select[data-show=yubi] {
+  background-color: #655f50;
+}
+.main-container .recharge-select[data-show=yubi] input,
+.main-container .recharge-select[data-show=yubi] select,
+.main-container .recharge-select[data-show=yubi] .text {
+  color: #ffb300;
+}
+.main-container .recharge-select[data-show=yubi] .recharge-select-header svg {
+  color: #ffb300;
+}
+.main-container .recharge-select[data-show=yubi] .yubi {
+  display: flex;
+}
+.main-container .recharge-select[data-show=yubao] {
+  background-color: #39283a;
+}
+.main-container .recharge-select[data-show=yubao] input,
+.main-container .recharge-select[data-show=yubao] select,
+.main-container .recharge-select[data-show=yubao] .text {
+  color: #c6ad6d;
+}
+.main-container .recharge-select[data-show=yubao] .recharge-select-header svg {
+  color: #ffb300;
+}
+.main-container .recharge-select[data-show=yubao] .yubao {
+  display: flex;
+}
+.main-container .recharge-select[data-show=gongping] {
+  background-color: #414246;
+}
+.main-container .recharge-select[data-show=gongping] input,
+.main-container .recharge-select[data-show=gongping] select,
+.main-container .recharge-select[data-show=gongping] .text {
+  color: #c6ad6d;
+}
+.main-container .recharge-select[data-show=gongping] .recharge-select-header svg {
+  color: #c6ad6d;
+}
+.main-container .recharge-select[data-show=gongping] .gongping {
+  display: flex;
+}
+.main-container .recharge-select[data-show=jinbi] {
+  background-color: #bca870;
+}
+.main-container .recharge-select[data-show=jinbi] input,
+.main-container .recharge-select[data-show=jinbi] select,
+.main-container .recharge-select[data-show=jinbi] .text {
+  color: #000;
+}
+.main-container .recharge-select[data-show=jinbi] .jinbi {
+  display: flex;
+}
+.main-container .recharge-select[data-show=guojialiyu] {
+  background-color: #363429;
+}
+.main-container .recharge-select[data-show=guojialiyu] input,
+.main-container .recharge-select[data-show=guojialiyu] select,
+.main-container .recharge-select[data-show=guojialiyu] .text {
+  color: #c6ad6d;
+}
+.main-container .recharge-select[data-show=guojialiyu] .recharge-select-header svg {
+  color: #c6ad6d;
+}
+.main-container .recharge-select[data-show=guojialiyu] .guojialiyu {
+  display: flex;
+}
 .main-container .recharge-select .recharge-select-header {
   padding: 8px 12px;
-  background-color: #fff;
+  box-shadow: 0px 0px 3px #000;
   border-radius: 5px;
   position: relative;
 }
@@ -338,7 +428,7 @@ body {
 }
 .main-container .recharge-select .recharge-select-to {
   padding: 8px 12px;
-  background-color: #fff;
+  box-shadow: 0px 0px 2px #000, 0px 3px 2px #000;
   border-radius: 5px;
   position: relative;
 }
@@ -365,41 +455,23 @@ body {
   color: rgb(236, 204, 160);
 }
 .main-container .recharge-select .recharge-select-option {
+  min-height: 473px;
   padding: 8px 12px;
-  background-color: #fff;
-  border-radius: 5px;
+}
+.main-container .recharge-select .recharge-select-option select:focus-visible {
+  outline: none;
 }
 .main-container .recharge-select .recharge-select-option .text {
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 16px;
 }
-.main-container .recharge-select .recharge-select-option [data-show=other] .other {
-  display: flex;
-}
-.main-container .recharge-select .recharge-select-option [data-show=yubi] .yubi {
-  display: flex;
-}
-.main-container .recharge-select .recharge-select-option [data-show=yubao] .yubao {
-  display: flex;
-}
-.main-container .recharge-select .recharge-select-option [data-show=gongping] .gongping {
-  display: flex;
-}
-.main-container .recharge-select .recharge-select-option [data-show=jinbi] .jinbi {
-  display: flex;
-}
-.main-container .recharge-select .recharge-select-option [data-show=guojialiyu] .guojialiyu {
-  display: flex;
-}
 .main-container .recharge-select .recharge-select-option .options {
-  display: none;
   row-gap: 20px;
   column-gap: 20px;
   margin-bottom: 20px;
 }
 .main-container .recharge-select .recharge-select-option .options .option-item {
-  background-color: #f1f1f1;
   border-radius: 10px;
   border: 1px solid transparent;
   width: calc((100% - 40px) / 3);
@@ -470,21 +542,6 @@ body {
   font-size: 12px;
   margin-left: 10px;
   color: #6c757d;
-}
-.main-container .recharge-select .gold-description {
-  padding: 8px 12px;
-  background-color: #fff;
-  border-radius: 5px;
-  position: relative;
-}
-.main-container .recharge-select .gold-description .text {
-  font-size: 14px;
-  color: #6c757d;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-.main-container .recharge-select .gold-description .des {
-  padding: 0 5px;
 }
 .main-container .recharge-select .confirm-order {
   height: 50px;

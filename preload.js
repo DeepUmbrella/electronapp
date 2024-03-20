@@ -24,7 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
   for (const closeProcessElement of closeProcessElements) {
     closeProcessElement.addEventListener("click", (e) => {
       const target = closeProcessElement.dataset.close;
-      console.log(11111);
+
       try {
         ipcRenderer.invoke(`close-${target}`);
       } catch (e) {

@@ -370,9 +370,114 @@ body {
 
   .recharge-select {
     background-color: #f8f9fa;
+    input,
+    select {
+      border-radius: 5px;
+      background-color: transparent;
+    }
+    .options {
+      display: none;
+    }
+    &[data-show="other"] {
+      .option-item {
+        background-color: #f1f1f1;
+      }
+      .other {
+        display: flex;
+      }
+      .recharge-select-header,
+      .recharge-select-to {
+        background-color: #fff;
+        box-shadow: none;
+      }
+      .recharge-select-option {
+        background-color: #fff;
+        border-radius: 5px;
+      }
+    }
+    &[data-show="yubi"] {
+      background-color: #655f50;
+      input,
+      select,
+      .text {
+        color: #ffb300;
+      }
+      .recharge-select-header {
+        svg {
+          color: #ffb300;
+        }
+      }
+
+      .yubi {
+        display: flex;
+      }
+    }
+    &[data-show="yubao"] {
+      input,
+      select,
+      .text {
+        color: #c6ad6d;
+      }
+      .recharge-select-header {
+        svg {
+          color: #ffb300;
+        }
+      }
+
+      background-color: #39283a;
+      .yubao {
+        display: flex;
+      }
+    }
+    &[data-show="gongping"] {
+      background-color: #414246;
+      input,
+      select,
+      .text {
+        color: #c6ad6d;
+      }
+      .recharge-select-header {
+        svg {
+          color: #c6ad6d;
+        }
+      }
+
+      .gongping {
+        display: flex;
+      }
+    }
+    &[data-show="jinbi"] {
+      background-color: #bca870;
+      input,
+      select,
+      .text {
+        color: #000;
+      }
+
+      .jinbi {
+        display: flex;
+      }
+    }
+    &[data-show="guojialiyu"] {
+      background-color: #363429;
+      input,
+      select,
+      .text {
+        color: #c6ad6d;
+      }
+      .recharge-select-header {
+        svg {
+          color: #c6ad6d;
+        }
+      }
+
+      .guojialiyu {
+        display: flex;
+      }
+    }
     .recharge-select-header {
       padding: 8px 12px;
-      background-color: #fff;
+      box-shadow: 0px 0px 3px #000;
       border-radius: 5px;
       position: relative;
       .recharge-select-back {
@@ -391,7 +496,7 @@ body {
 
     .recharge-select-to {
       padding: 8px 12px;
-      background-color: #fff;
+      box-shadow: 0px 0px 2px #000, 0px 3px 2px #000;
       border-radius: 5px;
       position: relative;
       .text {
@@ -421,51 +526,24 @@ body {
     }
 
     .recharge-select-option {
+      min-height: 473px;
       padding: 8px 12px;
-      background-color: #fff;
-      border-radius: 5px;
+
+      select:focus-visible {
+        outline: none;
+      }
+
       .text {
         font-size: 16px;
         font-weight: 700;
         margin-bottom: 16px;
       }
-      [data-show="other"] {
-        .other {
-          display: flex;
-        }
-      }
-      [data-show="yubi"] {
-        .yubi {
-          display: flex;
-        }
-      }
-      [data-show="yubao"] {
-        .yubao {
-          display: flex;
-        }
-      }
-      [data-show="gongping"] {
-        .gongping {
-          display: flex;
-        }
-      }
-      [data-show="jinbi"] {
-        .jinbi {
-          display: flex;
-        }
-      }
-      [data-show="guojialiyu"] {
-        .guojialiyu {
-          display: flex;
-        }
-      }
+
       .options {
-        display: none;
         row-gap: 20px;
         column-gap: 20px;
         margin-bottom: 20px;
         .option-item {
-          background-color: #f1f1f1;
           border-radius: 10px;
           border: 1px solid transparent;
           width: calc((100% - 20px * 2) / 3);
@@ -553,21 +631,6 @@ body {
       }
     }
 
-    .gold-description {
-      padding: 8px 12px;
-      background-color: #fff;
-      border-radius: 5px;
-      position: relative;
-      .text {
-        font-size: 14px;
-        color: #6c757d;
-        font-weight: 700;
-        margin-bottom: 10px;
-      }
-      .des {
-        padding: 0 5px;
-      }
-    }
     .confirm-order {
       height: 50px;
       position: absolute;

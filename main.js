@@ -1,7 +1,14 @@
 const { DEVICE_PIXEL } = require("./src/config/device");
 
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, screen, ipcMain, dialog } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  screen,
+  ipcMain,
+  dialog,
+  Menu,
+} = require("electron");
 const { createTray } = require("./src/tray");
 const { registerClose } = require("./src/event");
 const path = require("node:path");
@@ -70,6 +77,8 @@ const LoginWindow = (pass, updateTray) => {
 
     let rechargeCenter = RechargeCenterWindow();
 
+    let tanWan = TanWanWindow();
+
     updateTray([
       {
         label: "主页",
@@ -77,6 +86,7 @@ const LoginWindow = (pass, updateTray) => {
           r.hide();
           m.show();
           rechargeCenter.hide();
+          tanWan.hide();
         },
       },
       {
@@ -85,6 +95,7 @@ const LoginWindow = (pass, updateTray) => {
           m.hide();
           r.show();
           rechargeCenter.hide();
+          tanWan.hide();
         },
       },
       {
@@ -93,6 +104,16 @@ const LoginWindow = (pass, updateTray) => {
           m.hide();
           r.hide();
           rechargeCenter.show();
+          tanWan.hide();
+        },
+      },
+      {
+        label: "充值中心2",
+        click: async () => {
+          m.hide();
+          r.hide();
+          rechargeCenter.hide();
+          tanWan.show();
         },
       },
     ]);
@@ -162,6 +183,73 @@ const MainWindow = (callback) => {
   mainWindow.on("ready-to-show", callback);
 
   SettingWindow(mainWindow);
+
+  mainWindow.on("closed", () => {
+    mainWindow = null;
+  });
+
+  return mainWindow;
+};
+
+const TanWanWindowSettingWindow = (dependWindow) => {
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+
+  let tanWanWindow = new BrowserWindow({
+    ...DEVICE_PIXEL.SETTING,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+    },
+    show: false,
+    x: width - DEVICE_PIXEL.SETTING.width, // 设置左下角 x 坐标
+    y: height - DEVICE_PIXEL.SETTING.height,
+    resizable: false,
+    frame: false,
+    transparent: false,
+    icon: path.join(__dirname, "./src/resource/icon/icon.png"),
+  });
+
+  tanWanWindow.loadFile("./src/view/tanWan/setting.html");
+
+  dependWindow.on("closed", () => {
+    tanWanWindow?.close();
+  });
+
+  dependWindow.on("show", () => {
+    tanWanWindow.show();
+  });
+
+  dependWindow.on("hide", () => {
+    tanWanWindow.hide();
+  });
+  tanWanWindow.on("closed", () => {
+    tanWanWindow = null;
+    app.quit();
+  });
+};
+
+const TanWanWindow = (callback) => {
+  let mainWindow = new BrowserWindow({
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+    },
+    show: false,
+    resizable: true,
+    frame: true,
+    transparent: false,
+    icon: path.join(__dirname, "./src/resource/icon/icon.png"),
+
+    autoHideMenuBar: true,
+  });
+
+  // and load the index.html of the app.
+  mainWindow.loadURL("http://43.136.102.97:5000");
+  // mainWindow.loadURL("http://localhost:5501");
+
+  ipcMain.on("tanwan-setting-update", (e, ...args) => {
+    mainWindow.webContents.send("tanwan-setting-update", ...args);
+  });
+
+  TanWanWindowSettingWindow(mainWindow);
 
   mainWindow.on("closed", () => {
     mainWindow = null;

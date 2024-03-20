@@ -1,0 +1,15 @@
+body {
+  border-radius: 12px;
+  -webkit-app-region: drag;
+  padding: 20px;
+  background: rgb(239, 246, 255);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1), 0px 10.2px 21.6px rgba(23, 57, 222, 0.25);
+}
+
+.setting-container {
+  -webkit-app-region: no-drag;
+  height: 335px;
+}
+.setting-container .setting-tips {
+  font-size: 24px;
+}

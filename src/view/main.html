@@ -418,7 +418,8 @@
           </div>
         </div>
         <div
-          class="recharge-page recharge-open recharge-select"
+          class="recharge-page recharge-select"
+          data-show="other"
           id="recharge-select"
         >
           <div class="position-relative w-100">
@@ -443,7 +444,9 @@
                   />
                 </svg>
               </div>
-              <div class="recharge-select-title text-center">充值盒币</div>
+              <div class="recharge-select-title text text-center">
+                充值<span id="gold-type">通用路费</span>
+              </div>
             </div>
             <div class="recharge-select-to mb-3">
               <div class="text mb-4">充值到</div>
@@ -475,16 +478,16 @@
               <div class="text">
                 <select id="game-options">
                   <option value="other">请选择游戏</option>
-                  <option value="gongping">游戏一</option>
-                  <option value="guojialiyu">游戏二</option>
-                  <option value="jinbi">游戏三</option>
-                  <option value="yubao">游戏四</option>
-                  <option value="yubi">游戏五</option>
+                  <option value="gongping">率土之滨</option>
+                  <option value="guojialiyu">霸业</option>
+                  <option value="jinbi">攻城掠地</option>
+                  <option value="yubao">三国志幻想大陆</option>
+                  <option value="yubi">三国志战略版</option>
+                  <option value="other">其他游戏</option>
                 </select>
               </div>
               <div
                 id="recharge-options"
-                data-show="other"
                 class="d-flex flex-wrap justify-content-between align-items-center"
               >
                 <div
@@ -763,23 +766,33 @@
                 >
                   <div
                     type="button"
-                    data-top-up-number="100"
+                    data-top-up-number="128"
                     class="option-item d-flex flex-column justify-content-center align-items-center"
                   >
                     <div class="number-in">
-                      <span class="price">100</span><span class="unit">元</span>
+                      <span class="price">128</span><span class="unit">元</span>
                     </div>
-                    <div class="des">1万盒币</div>
+                    <div class="des">1280通用路费</div>
                   </div>
                   <div
                     type="button"
-                    data-top-up-number="500"
+                    data-top-up-number="328"
                     class="option-item d-flex flex-column justify-content-center align-items-center"
                   >
                     <div class="number-in">
-                      <span class="price">500</span><span class="unit">元</span>
+                      <span class="price">328</span><span class="unit">元</span>
                     </div>
-                    <div class="des">5万盒币</div>
+                    <div class="des">3280通用路费</div>
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="648"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <div class="number-in">
+                      <span class="price">648</span><span class="unit">元</span>
+                    </div>
+                    <div class="des">3280通用路费</div>
                   </div>
                   <div
                     type="button"
@@ -790,18 +803,18 @@
                       <span class="price">1000</span
                       ><span class="unit">元</span>
                     </div>
-                    <div class="des">10万盒币</div>
+                    <div class="des">10000通用路费</div>
                   </div>
                   <div
                     type="button"
-                    data-top-up-number="3000"
+                    data-top-up-number="2000"
                     class="option-item d-flex flex-column justify-content-center align-items-center"
                   >
                     <div class="number-in">
-                      <span class="price">3000</span
+                      <span class="price">2000</span
                       ><span class="unit">元</span>
                     </div>
-                    <div class="des">30万盒币</div>
+                    <div class="des">20000通用路费</div>
                   </div>
                   <div
                     type="button"
@@ -812,32 +825,12 @@
                       <span class="price">5000</span
                       ><span class="unit">元</span>
                     </div>
-                    <div class="des">50万盒币</div>
-                  </div>
-                  <div
-                    type="button"
-                    data-top-up-number="10000"
-                    class="option-item d-flex flex-column justify-content-center align-items-center"
-                  >
-                    <div class="number-in">
-                      <span class="price">10000</span
-                      ><span class="unit">元</span>
-                    </div>
-                    <div class="des">100万盒币</div>
+                    <div class="des">50000通用路费</div>
                   </div>
                 </div>
               </div>
-              <div class="custom-options">
-                <div class="custom-options-title">自定义金额</div>
-                <div class="pb-2 custom-options-sub">请输入1的倍数</div>
-              </div>
             </div>
-            <div class="gold-description">
-              <div class="text">盒币说明</div>
-              <div class="des">
-                盒币可用于游戏充值、交易行砍价保证金。盒币不可体现，不可转换为其他货币
-              </div>
-            </div>
+
             <div class="confirm-order d-flex">
               <div class="wallet d-flex align-items-center">
                 <span class="text">钱包支付: </span>

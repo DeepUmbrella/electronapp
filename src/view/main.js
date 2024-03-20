@@ -8,7 +8,17 @@ window.addEventListener("DOMContentLoaded", () => {
   const arrivalTimeElement = document.querySelector("#arrival-time");
   const gameOptionsElement = document.querySelector("#game-options");
   const gameValueElement = document.querySelector("#game-value");
-  //
+  const goldTypeElement = document.querySelector("#gold-type");
+  const gameOptionsElement2 = document.querySelector("#recharge-select");
+  //ss
+  const goldType = {
+    gongping: "玉符",
+    guojialiyu: "国家礼遇",
+    jinbi: "金币",
+    yubao: "元宝",
+    yubi: "玉璧",
+    other: "通用路费",
+  };
 
   window.WinAPI.HandleEvent("setting-update", (name, id, gold, arrivalTime) => {
     userNameShowElement.innerHTML = name;
@@ -65,7 +75,10 @@ window.addEventListener("DOMContentLoaded", () => {
     allShowPaymentsElements.forEach((element) => {
       element.innerHTML = "0.00";
     });
-    rechargeOptionsElement.dataset.show = e.target.value;
+
+    goldTypeElement.innerHTML = goldType[`${e.target.value ?? "other"}`];
+
+    gameOptionsElement2.dataset.show = e.target.value;
   });
 
   if (paymentDoneElement && rechargePageElement) {
