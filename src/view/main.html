@@ -417,7 +417,10 @@
             </div>
           </div>
         </div>
-        <div class="recharge-page recharge-select" id="recharge-select">
+        <div
+          class="recharge-page recharge-open recharge-select"
+          id="recharge-select"
+        >
           <div class="position-relative w-100">
             <div class="recharge-select-header mb-3">
               <div
@@ -469,70 +472,359 @@
               </div>
             </div>
             <div class="recharge-select-option mb-3">
-              <div class="text">选择盒币充值</div>
+              <div class="text">
+                <select id="game-options">
+                  <option value="other">请选择游戏</option>
+                  <option value="gongping">游戏一</option>
+                  <option value="guojialiyu">游戏二</option>
+                  <option value="jinbi">游戏三</option>
+                  <option value="yubao">游戏四</option>
+                  <option value="yubi">游戏五</option>
+                </select>
+              </div>
               <div
                 id="recharge-options"
-                class="options d-flex flex-wrap justify-content-between align-items-center"
+                data-show="other"
+                class="d-flex flex-wrap justify-content-between align-items-center"
               >
                 <div
-                  type="button"
-                  data-top-up-number="100"
-                  class="option-item d-flex flex-column justify-content-center align-items-center"
+                  class="options jinbi flex-wrap justify-content-between align-items-center"
+                  id="jinbi"
                 >
-                  <div class="number-in">
-                    <span class="price">100</span><span class="unit">元</span>
+                  <div
+                    type="button"
+                    data-top-up-number="68"
+                    class="option-item selected d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/jinbi1.jpg" alt="" />
                   </div>
-                  <div class="des">1万盒币</div>
+                  <div
+                    type="button"
+                    data-top-up-number="5"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/jinbi2.jpg" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="30"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/jinbi3.jpg" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="100"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/jinbi4.jpg" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="200"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/jinbi5.jpg" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="500"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/jinbi6.jpg" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="1000"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/jinbi7.jpg" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="2000"
+                    style="margin-right: auto"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/jinbi8.jpg" alt="" />
+                  </div>
                 </div>
+
                 <div
-                  type="button"
-                  data-top-up-number="500"
-                  class="option-item d-flex flex-column justify-content-center align-items-center"
+                  class="options guojialiyu flex-wrap justify-content-between align-items-center"
+                  id="guojialiyu"
                 >
-                  <div class="number-in">
-                    <span class="price">500</span><span class="unit">元</span>
+                  <div
+                    type="button"
+                    data-top-up-number="6"
+                    class="option-item selected d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/guojialiyu1.png" alt="" />
                   </div>
-                  <div class="des">5万盒币</div>
+                  <div
+                    type="button"
+                    data-top-up-number="30"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/guojialiyu2.png" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="68"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/guojialiyu3.png" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="128"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/guojialiyu4.png" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="328"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/guojialiyu5.png" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="648"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/guojialiyu6.png" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="998"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/guojialiyu7.png" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="1998"
+                    style="margin-right: auto"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/guojialiyu8.png" alt="" />
+                  </div>
                 </div>
+
                 <div
-                  type="button"
-                  data-top-up-number="1000"
-                  class="option-item d-flex flex-column justify-content-center align-items-center"
+                  class="options gongping flex-wrap justify-content-between align-items-center"
+                  id="gongping"
                 >
-                  <div class="number-in">
-                    <span class="price">1000</span><span class="unit">元</span>
+                  <div
+                    type="button"
+                    data-top-up-number="30"
+                    class="option-item selected d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/gongping1.png" alt="" />
                   </div>
-                  <div class="des">10万盒币</div>
+                  <div
+                    type="button"
+                    data-top-up-number="648"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/gongping2.png" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="328"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/gongping3.png" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="98"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/gongping4.png" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="30"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/gongping5.png" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="6"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/gongping6.png" alt="" />
+                  </div>
                 </div>
+
                 <div
-                  type="button"
-                  data-top-up-number="3000"
-                  class="option-item d-flex flex-column justify-content-center align-items-center"
+                  class="options yubao flex-wrap justify-content-between align-items-center"
+                  id="yubao"
                 >
-                  <div class="number-in">
-                    <span class="price">3000</span><span class="unit">元</span>
+                  <div
+                    type="button"
+                    data-top-up-number="6"
+                    class="option-item selected d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/yubao1.jpg" alt="" />
                   </div>
-                  <div class="des">30万盒币</div>
+                  <div
+                    type="button"
+                    data-top-up-number="30"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/yubao2.jpg" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="98"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/yubao3.jpg" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="198"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/yubao4.jpg" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="328"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/yubao5.jpg" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="648"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/yubao6.jpg" alt="" />
+                  </div>
                 </div>
+
                 <div
-                  type="button"
-                  data-top-up-number="5000"
-                  class="option-item d-flex flex-column justify-content-center align-items-center"
+                  class="options yubi flex-wrap justify-content-between align-items-center"
+                  id="yubi"
                 >
-                  <div class="number-in">
-                    <span class="price">5000</span><span class="unit">元</span>
+                  <div
+                    type="button"
+                    data-top-up-number="648"
+                    class="option-item selected d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/yubi1.png" alt="" />
                   </div>
-                  <div class="des">50万盒币</div>
+                  <div
+                    type="button"
+                    data-top-up-number="328"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/yubi2.png" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="198"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/yubi3.png" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="98"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/yubi4.png" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="30"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/yubi5.png" alt="" />
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="6"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <img src="../resource/img/yubi6.png" alt="" />
+                  </div>
                 </div>
+
                 <div
-                  type="button"
-                  data-top-up-number="10000"
-                  class="option-item d-flex flex-column justify-content-center align-items-center"
+                  class="options other flex-wrap justify-content-between align-items-center"
+                  id="other"
                 >
-                  <div class="number-in">
-                    <span class="price">10000</span><span class="unit">元</span>
+                  <div
+                    type="button"
+                    data-top-up-number="100"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <div class="number-in">
+                      <span class="price">100</span><span class="unit">元</span>
+                    </div>
+                    <div class="des">1万盒币</div>
                   </div>
-                  <div class="des">100万盒币</div>
+                  <div
+                    type="button"
+                    data-top-up-number="500"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <div class="number-in">
+                      <span class="price">500</span><span class="unit">元</span>
+                    </div>
+                    <div class="des">5万盒币</div>
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="1000"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <div class="number-in">
+                      <span class="price">1000</span
+                      ><span class="unit">元</span>
+                    </div>
+                    <div class="des">10万盒币</div>
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="3000"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <div class="number-in">
+                      <span class="price">3000</span
+                      ><span class="unit">元</span>
+                    </div>
+                    <div class="des">30万盒币</div>
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="5000"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <div class="number-in">
+                      <span class="price">5000</span
+                      ><span class="unit">元</span>
+                    </div>
+                    <div class="des">50万盒币</div>
+                  </div>
+                  <div
+                    type="button"
+                    data-top-up-number="10000"
+                    class="option-item d-flex flex-column justify-content-center align-items-center"
+                  >
+                    <div class="number-in">
+                      <span class="price">10000</span
+                      ><span class="unit">元</span>
+                    </div>
+                    <div class="des">100万盒币</div>
+                  </div>
                 </div>
               </div>
               <div class="custom-options">

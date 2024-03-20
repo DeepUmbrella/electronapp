@@ -6,6 +6,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const userGoldNumberElement = document.querySelector("#user-gold-number");
   const userIdSelectElement = document.querySelector("#user-id-select");
   const arrivalTimeElement = document.querySelector("#arrival-time");
+  const gameOptionsElement = document.querySelector("#game-options");
+  const gameValueElement = document.querySelector("#game-value");
   //
 
   window.WinAPI.HandleEvent("setting-update", (name, id, gold, arrivalTime) => {
@@ -57,6 +59,14 @@ window.addEventListener("DOMContentLoaded", () => {
   const paymentDoneElement = document.querySelector(
     '[data-toggle="recharge-done"]'
   );
+
+  gameOptionsElement.addEventListener("change", (e) => {
+    e.preventDefault();
+    allShowPaymentsElements.forEach((element) => {
+      element.innerHTML = "0.00";
+    });
+    rechargeOptionsElement.dataset.show = e.target.value;
+  });
 
   if (paymentDoneElement && rechargePageElement) {
     paymentDoneElement.addEventListener("click", () => {
