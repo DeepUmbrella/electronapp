@@ -207,6 +207,9 @@ const TanWanWindowSettingWindow = (dependWindow) => {
     transparent: false,
     icon: path.join(__dirname, "./src/resource/icon/icon.png"),
   });
+  ipcMain.on("tanwan-page-update", (e) => {
+    tanWanWindow.webContents.send("tanwan-page-update");
+  });
 
   tanWanWindow.loadFile("./src/view/tanWan/setting.html");
 
@@ -229,6 +232,7 @@ const TanWanWindowSettingWindow = (dependWindow) => {
 
 const TanWanWindow = (callback) => {
   let mainWindow = new BrowserWindow({
+    ...DEVICE_PIXEL.PC,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },

@@ -24,40 +24,74 @@
       </div>
       <form id="setting-form">
         <div class="input-group mb-3 flex-nowrap">
-          <span class="input-group-text" for="user-nick-name">游戏名称</span>
+          <span class="input-group-text" for="game_name">游戏名称</span>
           <input
-            id="user-nick-name"
+            id="game_name"
             type="text"
             class="form-control"
             placeholder="请输入游戏名称使用“，”分隔"
-            value=""
+            value="率土之滨,霸业,攻城掠地,三国志幻想大陆,三国志战略版,其他游戏"
           />
         </div>
         <div class="input-group mb-3 flex-nowrap">
-          <span class="input-group-text" for="user-id">服务器名称</span>
+          <span class="input-group-text" for="game_bi">游戏币名称</span>
           <input
-            maxlength="20"
+            id="game_bi"
             type="text"
             class="form-control"
-            id="user-id"
-            placeholder="请输入服务器名称使用“，”分隔"
-            value=""
+            placeholder="请输入游戏币名称使用“，”分隔"
+            value="玉符,国家礼遇,金币,元宝,玉璧,通用路费"
           />
         </div>
         <div class="input-group mb-3 flex-nowrap">
-          <span class="input-group-text" for="balance">账号名称</span>
+          <span class="input-group-text" for="game_bl">兑换比例</span>
           <input
-            id="balance"
-            maxlength="10"
+            id="game_bl"
+            type="text"
+            class="form-control"
+            placeholder="请输入兑换比例使用“，”分隔"
+            value="10,10,10,10,10,10"
+          />
+        </div>
+        <div class="input-group mb-3 flex-nowrap">
+          <span class="input-group-text" for="server_name">服务器名称</span>
+          <input
+            type="text"
+            class="form-control"
+            id="server_name"
+            placeholder="请输入服务器名称使用“，”分隔"
+            value="率土之滨1:率土之滨2,霸业1:霸业2,攻城掠地1:攻城掠地2,三国志幻想大陆1:三国志幻想大陆2,三国志战略版1:三国志战略版2,其他游戏1:其他游戏2"
+          />
+        </div>
+        <div class="input-group mb-3 flex-nowrap">
+          <span class="input-group-text" for="server_num">服务器数量</span>
+          <input
+            type="text"
+            class="form-control"
+            id="server_num"
+            placeholder="请输入服务器数量使用“，”分隔"
+            value="100:100,100:100,100:100,100:100,100:100,100:100"
+          />
+        </div>
+        <div class="input-group mb-3 flex-nowrap">
+          <span class="input-group-text" for="server_suffix">服务器后缀</span>
+          <input
+            type="text"
+            class="form-control"
+            id="server_suffix"
+            placeholder="请输入服务器名称使用“，”分隔"
+            value="区:服,区:服,区:服,区:服,区:服,区:服"
+          />
+        </div>
+        <div class="input-group mb-3 flex-nowrap">
+          <span class="input-group-text" for="user_name">账号名称</span>
+          <input
+            id="user_name"
             type="text"
             class="form-control"
             placeholder="请输入账号名称使用“，”分隔"
-            value=""
+            value="超级大傻吊,第一剑客"
           />
-        </div>
-
-        <div class="mb-3 mx-0 row align-items-center justify-content-center">
-          <button type="submit" class="w-100 btn btn-primary">应用设置</button>
         </div>
       </form>
     </div>
